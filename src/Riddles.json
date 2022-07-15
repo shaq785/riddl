@@ -1,0 +1,87 @@
+[
+	{
+		"id": 1,
+		"question": "A tasty reward given to well behaved dogs and kids",
+		"answer": "Treat"
+	},
+	{
+		"id": 2,
+		"question": "It takes two people to do this",
+		"answer": "Tango"
+	},
+	{
+		"id": 3,
+		"question": "What has a face and two hands but no arms or legs?",
+		"answer": "Clock"
+	},
+	{
+		"id": 4,
+		"question": "What five-letter word becomes shorter when you add two letters to it?",
+		"answer": "Short"
+	},
+	{
+		"id": 5,
+		"question": "What gets wetter as it dries?",
+		"answer": "Towel"
+	},
+	{
+		"id": 6,
+		"question": "What has four fingers and one thumb, but is not alive?",
+		"answer": "Glove"
+	},
+	{
+		"id": 7,
+		"question": "What is half of two plus two?",
+		"answer": "Three"
+	},
+	{
+		"id": 8,
+		"question": "What word looks the same upside down and backwards?",
+		"answer": "Swims"
+	},
+	{
+		"id": 9,
+		"question": "Take off my skin and I won't cry, but you will, What am I?",
+		"answer": "Onion"
+	},
+	{
+		"id": 10,
+		"question": "What doesn't get any wetter, no matter how much rain falls on it?",
+		"answer": "Water"
+	},
+	{
+		"id": 11,
+		"question": "What sits in a corner while traveling all around the world?",
+		"answer": "Stamp"
+	},
+	{
+		"id": 12,
+		"question": "You enter a dark room. You have only one match. There is an oil lamp, a furnace, and a stove in the room. Which would you light first?",
+		"answer": "Match"
+	},
+	{
+		"id": 13,
+		"question": "What has four legs, but can't walk?",
+		"answer": "Table"
+	},
+	{
+		"id": 14,
+		"question": "What english word retains the same pronunciation, even after you take away four of its five letters?",
+		"answer": "Queue"
+	},
+	{
+		"id": 15,
+		"question": "What word of five letters has only one left when two letters are removed?",
+		"answer": "Alone"
+	},
+	{
+		"id": 16,
+		"question": "David's father has three sons: Snap, Crackle, and ?",
+		"answer": "David"
+	},
+	{
+		"id": 17,
+		"question": "What has a mouth but can't chew?",
+		"answer": "River"
+	}
+]
