@@ -24,7 +24,7 @@ function GameOver(props) {
                 keyboard={false}
             >
                     <Modal.Header>
-                        <h1>{gameOver.guessedWord ? "You Got It!" : "Better Luck Next Time"}</h1>
+                        <h1>{gameOver.guessedWord ? props.winAlert : "Better Luck Next Time"}</h1>
                         <Row>
                             <Col>
                                 <p><span className="d-block">{props.gamesPlayed}</span> Played</p>
@@ -32,6 +32,15 @@ function GameOver(props) {
                             <Col>
                                 <p><span className="d-block">{winPerWhole}%</span> Win %</p>
                             </Col>
+                        </Row>
+                        <Row>
+                            <Col>Guess Distribution</Col>
+                        </Row>
+                        <Row className="flex-col">
+                            <Col>1: {props.firstAttempt}</Col>
+                            <Col>2: {props.secAttempt}</Col>
+                            <Col>3: {props.thirdAttempt}</Col>
+                            <Col>4: {props.fourthAttempt}</Col>
                         </Row>
                     </Modal.Header>
                     <Modal.Body>

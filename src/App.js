@@ -26,11 +26,18 @@ function App() {
   //LOCAL STORAGE
   const [gamesPlayedLS] = useLocalStorage('gamesPlayedLSTotal', 0);
   const [gamesWonLS] = useLocalStorage('gamesWonLSTotal', 0);
-  const [gamesLostLS] = useLocalStorage('gamesLostLSTotal', 0);
+  // const [gamesLostLS] = useLocalStorage('gamesLostLSTotal', 0);
+
+  const [firstAttempt] = useLocalStorage('first', 0);
+  const [secAttempt] = useLocalStorage('second', 0);
+  const [thirdAttempt] = useLocalStorage('third', 0);
+  const [fourthAttempt] = useLocalStorage('fourth', 0);
+
 
   const [gamesPlayedTotal, setGamesPlayedTotal] = useState({played: gamesPlayedLS});
   const [gamesWonTotal, setGamesWonTotal] = useState({won: gamesWonLS});
-  const [gamesLostTotal, setGamesLostTotal] = useState({lost: gamesLostLS});
+  // const [gamesLostTotal, setGamesLostTotal] = useState({lost: gamesLostLS});
+  const [winAttempt, setWinAttempt] = useState({first: firstAttempt, second: secAttempt, third: thirdAttempt, fourth: fourthAttempt, winAlert: ""});
 
 
   
@@ -63,13 +70,58 @@ function App() {
     return newWinCount;
   }
 
-  function gamesLost(gamesLostLS) {
-    const lossCount = localStorage.getItem('gamesLostLSTotal');
-    const LossCurrent = Number(lossCount) + 1;
-    let newLossCount = String(LossCurrent);
-    localStorage.setItem('gamesLostLSTotal', newLossCount)
-    return newLossCount;
+  function winAttemptCount() {
+    const firstAttempt = localStorage.getItem('first');
+    const secAttempt = localStorage.getItem('second');
+    const thirdAttempt = localStorage.getItem('third');
+    const fourthAttempt = localStorage.getItem('fourth');
+
+    console.log("Current Attempt", currAttempt.attempt);
+
+    if(currAttempt.attempt === 0 ){
+      localStorage.setItem('first', Number(firstAttempt) + 1);
+      setWinAttempt({
+        first: winAttempt.first + 1, 
+        second: winAttempt.second, 
+        third: winAttempt.third, 
+        fourth: winAttempt.fourth,
+        winAlert: "Amazing!" })
+    } else if(currAttempt.attempt === 1){
+      localStorage.setItem('second', Number(secAttempt) + 1);
+      setWinAttempt({
+        first: winAttempt.first, 
+        second: winAttempt.second + 1, 
+        third: winAttempt.third, 
+        fourth: winAttempt.fourth,
+        winAlert: "Great!" })
+    }else if(currAttempt.attempt === 2){
+      localStorage.setItem('third', Number(thirdAttempt) + 1);
+      setWinAttempt({
+        first: winAttempt.first, 
+        second: winAttempt.second, 
+        third: winAttempt.third + 1, 
+        fourth: winAttempt.fourth,
+        winAlert: "Good" });
+    }else{
+      localStorage.setItem('fourth', Number(fourthAttempt) + 1);
+      setWinAttempt({
+        first: winAttempt.first, 
+        second: winAttempt.second, 
+        third: winAttempt.third, 
+        fourth: winAttempt.fourth + 1,
+        winAlert: "Close call" })
+    }
+    
+    return;
   }
+
+  // function gamesLost(gamesLostLS) {
+  //   const lossCount = localStorage.getItem('gamesLostLSTotal');
+  //   const LossCurrent = Number(lossCount) + 1;
+  //   let newLossCount = String(LossCurrent);
+  //   localStorage.setItem('gamesLostLSTotal', newLossCount)
+  //   return newLossCount;
+  // }
 
   
 
@@ -115,18 +167,20 @@ function App() {
     if (currWord.toLowerCase() === correctWord.toLowerCase()){
       gamesPlayedCount();
       gamesWon();
-      setGameOver({gameOver: true, guessedWord: true})
-      setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 })
-      setGamesWonTotal({won: gamesWonTotal.won + 1 })
+      winAttemptCount();
+      setGameOver({gameOver: true, guessedWord: true});
+      setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 });
+      setGamesWonTotal({won: gamesWonTotal.won + 1 });
       return;
     }
 
     if (currAttempt.attempt === 3){
       gamesPlayedCount();
-      gamesLost();
+      // gamesLost();
       setGameOver({gameOver: true, guessedWord: false})
       setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 })
-      setGamesLostTotal({lost: gamesLostTotal.lost + 1 }) 
+      console.log("Win Attempt", currAttempt.attempt)
+      // setGamesLostTotal({lost: gamesLostTotal.lost + 1 }) 
     }
 
   }
@@ -147,7 +201,7 @@ function App() {
   // }
   
   return (
-    <div className="App">
+    <div className="app">
       <nav><h1>Riddl</h1></nav>
       <AppContext.Provider
         value={{
@@ -164,8 +218,7 @@ function App() {
           disabledLetters,
           gameOver,
           gamesPlayedTotal,
-          gamesWonTotal,
-          gamesLostTotal
+          gamesWonTotal
         }}
       >
         <Alert />
@@ -173,7 +226,18 @@ function App() {
           <h2>{question}</h2>
           <Board />
           <Keyboard />
-          {gameOver.gameOver ? <GameOver gamesPlayed={gamesPlayedTotal.played} gamesWon={gamesWonTotal.won} gamesLost={gamesLostTotal.lost} /> : ''}
+          {gameOver.gameOver ? 
+            <GameOver 
+              gamesPlayed={gamesPlayedTotal.played} 
+              gamesWon={gamesWonTotal.won} 
+              firstAttempt={winAttempt.first}
+              secAttempt={winAttempt.second}
+              thirdAttempt={winAttempt.third}
+              fourthAttempt={winAttempt.fourth}
+              winAlert={winAttempt.winAlert}
+             /> 
+             : ''
+          }
         </div>
       </AppContext.Provider>
     </div>
