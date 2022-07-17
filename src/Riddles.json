@@ -83,5 +83,145 @@
 		"id": 17,
 		"question": "What has a mouth but can't chew?",
 		"answer": "River"
+	},
+	{
+		"id": 18,
+		"question": "What has many keys but can’t open a single lock?",
+		"answer": "Piano"
+	},
+	{
+		"id": 19,
+		"question": "What runs all around a backyard, yet never moves?",
+		"answer": "Fence"
+	},
+	{
+		"id": 20,
+		"question": "I am an odd number. Take away a letter and I become even. What number am I?",
+		"answer": "Seven"
+	},
+	{
+		"id": 21,
+		"question": "What can fill a room but takes up no space?",
+		"answer": "Light"
+	},
+	{
+		"id": 22,
+		"question": "People make me, save me, change me, raise me. What am I?",
+		"answer": "Money"
+	},
+	{
+		"id": 23,
+		"question": "At night, they come without being fetched. By day they are lost without being stolen. What are they?",
+		"answer": "Stars"
+	},
+	{
+		"id": 24,
+		"question": "Without the first two letters, I’m an intelligent animal. Without the first three letters, I’m a subject in school. And, without the first four letters, I’m the letter “e.” What am I?",
+		"answer": "Grape"
+	},
+	{
+		"id": 25,
+		"question": "I go around in circles, but always straight ahead. I never complain no matter where I am led. What am I?",
+		"answer": "Wheel"
+	},
+	{
+		"id": 26,
+		"question": "You bury me when I’m alive and dig me up when I’m dead. What am I?",
+		"answer": "Plant"
+	},
+	{
+		"id": 27,
+		"question": "What is the best month for a parade?",
+		"answer": "March"
+	},
+	{
+		"id": 28,
+		"question": "There’s only one word in the dictionary that’s spelled wrong. What is it?",
+		"answer": "Wrong"
+	},
+	{
+		"id": 29,
+		"question": "What is full of holes but still holds water?",
+		"answer": "Sponge"
+	},
+	{
+		"id": 30,
+		"question": "What do you answer even though it never asks you questions?",
+		"answer": "Phone"
+	},
+	{
+		"id": 31,
+		"question": "Sometimes I shine, sometimes I’m dull, sometimes I am big, and sometimes I am small. I can be pointy, I can be curved, and don’t ask me questions because even though I’m sharp, I’m not smart enough to answer you. What am I?",
+		"answer": "Knife"
+	},
+	{
+		"id": 32,
+		"question": "Kids get high on me, I make them go wild and then they crash whenever they have too much of me? Am I a drug? What am I?",
+		"answer": "Sugar"
+	},
+	{
+		"id": 33,
+		"question": "I am a weighty currency.",
+		"answer": "Pound"
+	},
+	{
+		"id": 34,
+		"question": "I like to twirl my body but keep my head up high. After I go in, everything becomes tight. What am I?",
+		"answer": "Screw"
+	},
+	{
+		"id": 35,
+		"question": "I am a kind of coat that can only be put on when wet. What am I?",
+		"answer": "Paint"
+	},
+	{
+		"id": 36,
+		"question": "If all Wibbles are Criggles, all Borkins are Kwumblins, no Hoggles are Borkins, and all Criggles are Borkins, is it true that all Borkins are Criggles?",
+		"answer": "False"
+	},
+	{
+		"id": 37,
+		"question": "I can be sad, I can be happy, I can be angry and cry, I come with many faces and sometimes many sizes. I am able to communicate things words often cannot and I can move from place to place at the speed of light. What am I?",
+		"answer": "Emoji"
+	},
+	{
+		"id": 38,
+		"question": "I can be crushed to pieces but only if I am given away first, I can be clogged and attacked but that’s usually my own doing. No matter how many problems I have, you wouldn’t dare let me go. What am I?",
+		"answer": "Heart"
+	},
+	{
+		"id": 39,
+		"question": "What word becomes larger when you add the letter “r” to it?",
+		"answer": "Large"
+	},
+	{
+		"id": 40,
+		"question": "People say I put doctors out of business, sometimes I am sour, sometimes I am sweet, I can be eaten and can also be drunk. What am I?",
+		"answer": "Apple"
+	},
+	{
+		"id": 41,
+		"question": "Black and white, patterns, print or stripes, this is my make-up and I live in the wild. What am I?",
+		"answer": "Zebra"
+	},
+	{
+		"id": 42,
+		"question": "You see him flying around carrying bows and arrows and once he hits you with it, all you feel is love not sorrow. He must have hit us both. Who is he?",
+		"answer": "Cupid"
+	},
+	{
+		"id": 43,
+		"question": "This can be yellow, red, pink or white. It is delicate and fragrant and you better not forget to give some to me regularly! What am it?",
+		"answer": "Roses"
+	},
+	{
+		"id": 44,
+		"question": "I go up and I go down, sometimes I am curvy and sometimes I am straight. What am I?",
+		"answer": "Stairs"
+	},
+	{
+		"id": 45,
+		"question": "Steve is younger than Pete but older than Nicky. Larry is older than Erica who is older than Steve. Pete is older than Larry. Who is the middle child?",
+		"answer": "Erica"
 	}
 ]

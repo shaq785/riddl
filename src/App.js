@@ -24,9 +24,16 @@ function App() {
 
 
   //LOCAL STORAGE
-  const [gamesPlayedTotal, setGamesPlayedTotal] = useLocalStorage('gamesPlayedTotal', 0);
-  const [gamesWonTotal, setGamesWonTotal] = useLocalStorage('gamesWonTotal', 0);
-  const [gamesLostTotal, setGamesLostTotal] = useLocalStorage('gamesLostTotal', 0);
+  const [gamesPlayedLS] = useLocalStorage('gamesPlayedLSTotal', 0);
+  const [gamesWonLS] = useLocalStorage('gamesWonLSTotal', 0);
+  const [gamesLostLS] = useLocalStorage('gamesLostLSTotal', 0);
+
+  const [gamesPlayedTotal, setGamesPlayedTotal] = useState({played: gamesPlayedLS});
+  const [gamesWonTotal, setGamesWonTotal] = useState({won: gamesWonLS});
+  const [gamesLostTotal, setGamesLostTotal] = useState({lost: gamesLostLS});
+
+
+  
 
   // const [riddleSet, setRiddleSet] = useState(new Set());
   // const [correctRiddle, setCorrectRiddle] = useState("")
@@ -40,28 +47,28 @@ function App() {
     });
   }, []);
 
-  function gamesPlayedCount(gamesPlayedTotal) {
-      const count = localStorage.getItem('gamesPlayedTotal');
+  function gamesPlayedCount(gamesPlayedLS) {
+      const count = localStorage.getItem('gamesPlayedLSTotal');
       const current = Number(count) + 1;
       let newCount = String(current);
-      localStorage.setItem('gamesPlayedTotal', newCount)
-      return ;
+      localStorage.setItem('gamesPlayedLSTotal', newCount)
+      return newCount;
   }
 
-  function gamesWon(gamesWonTotal) {
-    const winCount = localStorage.getItem('gamesWonTotal');
+  function gamesWon(gamesWonLS) {
+    const winCount = localStorage.getItem('gamesWonLSTotal');
     const winCurrent = Number(winCount) + 1;
     let newWinCount = String(winCurrent);
-    localStorage.setItem('gamesWonTotal', newWinCount)
-    return ;
+    localStorage.setItem('gamesWonLSTotal', newWinCount)
+    return newWinCount;
   }
 
-  function gamesLost(gamesLostTotal) {
-    const lossCount = localStorage.getItem('gamesLostTotal');
+  function gamesLost(gamesLostLS) {
+    const lossCount = localStorage.getItem('gamesLostLSTotal');
     const LossCurrent = Number(lossCount) + 1;
     let newLossCount = String(LossCurrent);
-    localStorage.setItem('gamesLostTotal', newLossCount)
-    return ;
+    localStorage.setItem('gamesLostLSTotal', newLossCount)
+    return newLossCount;
   }
 
   
@@ -102,12 +109,15 @@ function App() {
       setCurrAttempt({attempt: currAttempt.attempt + 1, letterPos: 0});
     }else {
       alert("Word Not Found");
+      return false;
     }
 
     if (currWord.toLowerCase() === correctWord.toLowerCase()){
       gamesPlayedCount();
       gamesWon();
       setGameOver({gameOver: true, guessedWord: true})
+      setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 })
+      setGamesWonTotal({won: gamesWonTotal.won + 1 })
       return;
     }
 
@@ -115,11 +125,11 @@ function App() {
       gamesPlayedCount();
       gamesLost();
       setGameOver({gameOver: true, guessedWord: false})
+      setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 })
+      setGamesLostTotal({lost: gamesLostTotal.lost + 1 }) 
     }
 
   }
-
-  console.log('localStorage', localStorage);
 
   
 
@@ -163,7 +173,7 @@ function App() {
           <h2>{question}</h2>
           <Board />
           <Keyboard />
-          {gameOver.gameOver ? <GameOver /> : ''}
+          {gameOver.gameOver ? <GameOver gamesPlayed={gamesPlayedTotal.played} gamesWon={gamesWonTotal.won} gamesLost={gamesLostTotal.lost} /> : ''}
         </div>
       </AppContext.Provider>
     </div>

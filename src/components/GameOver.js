@@ -2,11 +2,18 @@ import React, {useContext, useState} from 'react'
 import { AppContext } from '../App'
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import Modal from 'react-bootstrap/Modal'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-function GameOver() {
+
+  
+
+function GameOver(props) {
     const {gameOver, gamesPlayedTotal, gamesWonTotal, gamesLostTotal, currAttempt, correctWord} = useContext(AppContext)
     const [show, setShow] = useState(true);
 
+    const winPer = ((props.gamesWon) / (props.gamesPlayed)) * 100;
+    const winPerWhole = Math.round(winPer);
 
     return (
         <ThemeProvider>
@@ -18,9 +25,14 @@ function GameOver() {
             >
                     <Modal.Header>
                         <h1>{gameOver.guessedWord ? "You Got It!" : "Better Luck Next Time"}</h1>
-                        <p>Games Played: {gamesPlayedTotal}</p>
-                        <p>Total Wins: {gamesWonTotal} </p>
-                        <p>Total Losses: {gamesLostTotal} </p>
+                        <Row>
+                            <Col>
+                                <p><span className="d-block">{props.gamesPlayed}</span> Played</p>
+                            </Col>
+                            <Col>
+                                <p><span className="d-block">{winPerWhole}%</span> Win %</p>
+                            </Col>
+                        </Row>
                     </Modal.Header>
                     <Modal.Body>
                         <h3>
