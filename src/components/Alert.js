@@ -1,6 +1,4 @@
-import React, {useContext, useState} from 'react'
-import ThemeProvider from 'react-bootstrap/ThemeProvider'
-import Modal from 'react-bootstrap/Modal'
+import React from 'react'
 
 function Alert() {
 

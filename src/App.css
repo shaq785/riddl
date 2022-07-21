@@ -148,7 +148,7 @@ h2{
   justify-content: center;
 }
 
-.modal-header{
+.modal-header, .modal-footer{
   justify-content: center;
   flex-direction: column;
 }
@@ -161,6 +161,13 @@ h2{
 .modal-header p span{
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.modal-header .btn-close{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 1;
 }
 
 .flex-col{

@@ -6,6 +6,8 @@ import Alert from './components/Alert';
 import {createContext, useState, useEffect} from 'react';
 import { boardDefault, generateWordSet } from "./Words";
 import { useLocalStorage } from "./useLocalStorage";
+import dateFormat from 'dateformat';
+
 
 // import { generateRiddleSet } from "./Riddles"
 // import Riddles from "./Riddles"
@@ -20,7 +22,6 @@ function App() {
   const [question, setQuestion] = useState("");
   const [disabledLetters, setDisabledLetters] = useState([]);
   const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false})
-  // const [show, setShow] = useState({show: false})
 
 
   //LOCAL STORAGE
@@ -39,12 +40,13 @@ function App() {
   // const [gamesLostTotal, setGamesLostTotal] = useState({lost: gamesLostLS});
   const [winAttempt, setWinAttempt] = useState({first: firstAttempt, second: secAttempt, third: thirdAttempt, fourth: fourthAttempt, winAlert: ""});
 
-
-  
+  // const dailyTimer = dateFormat(nextDay, "mmmm dS, yyyy");
 
   // const [riddleSet, setRiddleSet] = useState(new Set());
   // const [correctRiddle, setCorrectRiddle] = useState("")
-  
+
+  const [riddleIdVal, setRiddleIdVal] = useState({riddleIdVal: 0});
+
 
   useEffect(() => {
     generateWordSet().then((words) => {
@@ -53,6 +55,12 @@ function App() {
       setQuestion(words.todaysQuestion);
     });
   }, []);
+
+  function newGame(gamesWonLS) {
+    setRiddleIdVal({ riddleIdVal: riddleIdVal + 1} );
+    return riddleIdVal;
+  }
+
 
   function gamesPlayedCount(gamesPlayedLS) {
       const count = localStorage.getItem('gamesPlayedLSTotal');
@@ -85,7 +93,7 @@ function App() {
         second: winAttempt.second, 
         third: winAttempt.third, 
         fourth: winAttempt.fourth,
-        winAlert: "Amazing!" })
+        winAlert: "Wow, So Smart!" })
     } else if(currAttempt.attempt === 1){
       localStorage.setItem('second', Number(secAttempt) + 1);
       setWinAttempt({
@@ -93,7 +101,7 @@ function App() {
         second: winAttempt.second + 1, 
         third: winAttempt.third, 
         fourth: winAttempt.fourth,
-        winAlert: "Great!" })
+        winAlert: "Amazing Job!" })
     }else if(currAttempt.attempt === 2){
       localStorage.setItem('third', Number(thirdAttempt) + 1);
       setWinAttempt({
@@ -101,7 +109,7 @@ function App() {
         second: winAttempt.second, 
         third: winAttempt.third + 1, 
         fourth: winAttempt.fourth,
-        winAlert: "Good" });
+        winAlert: "Pretty Average" });
     }else{
       localStorage.setItem('fourth', Number(fourthAttempt) + 1);
       setWinAttempt({
@@ -109,7 +117,7 @@ function App() {
         second: winAttempt.second, 
         third: winAttempt.third, 
         fourth: winAttempt.fourth + 1,
-        winAlert: "Close call" })
+        winAlert: "Ooo Close Call" })
     }
     
     return;
@@ -132,6 +140,24 @@ function App() {
   //     setCorrectRiddle(riddles.todaysRiddle);
   //   });
   // }, []);
+
+//   const NewGame = () =>{
+//     var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+//     var nextDayFormat = dateFormat(currentDate, "mmmm, dd, yyyy");
+//     var todaysDate = new Date();
+//     var todaysDateFormat = dateFormat(todaysDate, "mmmm, dd, yyyy");
+//     if(todaysDateFormat === nextDayFormat && riddleIdVal < 44){
+//         setRiddleIdVal({ riddleIdVal: riddleIdVal + 1} );
+//         const riddleIdVal = riddleIdVal + 1;
+//         return riddleIdVal;
+//     } else{
+//         setRiddleIdVal({ riddleIdVal: 0 });
+//         const riddleIdVal = riddleIdVal;
+//         return riddleIdVal;
+//     }
+// }
+
+
   
   const onSelectLetter = (keyVal) => {
     if (currAttempt.letterPos > 4) return;
@@ -185,6 +211,19 @@ function App() {
 
   }
 
+  const onNewGame = () => {
+    var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+    var nextDayFormat = dateFormat(currentDate, "mmmm, dd, yyyy");
+    var todaysDate = new Date();
+    var todaysDateFormat = dateFormat(todaysDate, "mmmm, dd, yyyy");
+    if(todaysDateFormat === nextDayFormat && riddleIdVal < 44){
+      newGame();
+    } else{
+        setRiddleIdVal({ riddleIdVal: 0 });
+    }
+
+}
+
   
 
   // const onOrientation = () => {
@@ -215,6 +254,7 @@ function App() {
           onDelete,
           onEnter,
           setDisabledLetters,
+          onNewGame,
           disabledLetters,
           gameOver,
           gamesPlayedTotal,

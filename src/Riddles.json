@@ -141,8 +141,8 @@
 	},
 	{
 		"id": 29,
-		"question": "What is full of holes but still holds water?",
-		"answer": "Sponge"
+		"question": "Steve is younger than Pete but older than Nicky. Larry is older than Erica who is older than Steve. Pete is older than Larry. Who is the middle child?",
+		"answer": "Erica"
 	},
 	{
 		"id": 30,
@@ -211,17 +211,7 @@
 	},
 	{
 		"id": 43,
-		"question": "This can be yellow, red, pink or white. It is delicate and fragrant and you better not forget to give some to me regularly! What am it?",
+		"question": "This can be yellow, red, pink or white. It is delicate and fragrant and you better not forget to give some water to me regularly! What am it?",
 		"answer": "Roses"
-	},
-	{
-		"id": 44,
-		"question": "I go up and I go down, sometimes I am curvy and sometimes I am straight. What am I?",
-		"answer": "Stairs"
-	},
-	{
-		"id": 45,
-		"question": "Steve is younger than Pete but older than Nicky. Larry is older than Erica who is older than Steve. Pete is older than Larry. Who is the middle child?",
-		"answer": "Erica"
 	}
 ]
