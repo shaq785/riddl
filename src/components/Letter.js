@@ -16,9 +16,9 @@ function Letter({letterPos, attemptVal}) {
              setDisabledLetters((prev) => [...prev, letter]);
          }
      }, [currAttempt.attempt]);
-    
+    //console.log('letter state',letterState); 
     return (
-        <div className="letter" id={letterState}>
+        <div className={`letter ${letterState || "error"}`}>
             {""}
             {letter}
         </div>

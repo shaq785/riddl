@@ -44,18 +44,18 @@ function Keyboard() {
         <div className="keyboard">
             <div className="line1">
                 {keys1.map((key) => {
-                    return <Key keyVal={key} disabled={disabledLetters.includes(key)} />;
+                    return <Key keyVal={key} key={key} disabled={disabledLetters.includes(key)} />;
                 })}
             </div>
             <div className="line2">
                 {keys2.map((key) => {
-                    return <Key keyVal={key} disabled={disabledLetters.includes(key)} />;
+                    return <Key keyVal={key} key={key} disabled={disabledLetters.includes(key)} />;
                 })}
             </div>
             <div className="line3">
                 <Key keyVal={"ENT"} bigKey />
                 {keys3.map((key) => {
-                    return <Key keyVal={key} disabled={disabledLetters.includes(key)} />;
+                    return <Key keyVal={key} key={key} disabled={disabledLetters.includes(key)} />;
                 })}
                 <Key keyVal={"DEL"} bigKey />
             </div>

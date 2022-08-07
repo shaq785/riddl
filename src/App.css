@@ -77,15 +77,15 @@ h2{
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#correct {
+.correct {
   background-color: #528d4e;
 }
 
-#almost {
+.almost {
   background-color: #b49f39;
 }
 
-#error {
+.error {
   background-color: #3a393c;
 }
 
@@ -132,10 +132,10 @@ h2{
   cursor: pointer;
 }
 
-#big {
+.big {
   width: 100px;
 }
-#disabled {
+.disabled {
   background-color: #3a393c;
 }
 

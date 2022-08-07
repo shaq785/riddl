@@ -47,6 +47,13 @@ function App() {
 
   const [riddleIdVal, setRiddleIdVal] = useState({riddleIdVal: 0});
 
+  Storage.prototype.setObject = function(key, value) {
+    this.setItem(key, JSON.stringify(value));
+  }
+  Storage.prototype.getObject = function(key) {
+      var value = this.getItem(key);
+      return value && JSON.parse(value);
+  }
 
   useEffect(() => {
     generateWordSet().then((words) => {
@@ -191,12 +198,28 @@ function App() {
     }
 
     if (currWord.toLowerCase() === correctWord.toLowerCase()){
-      gamesPlayedCount();
-      gamesWon();
-      winAttemptCount();
-      setGameOver({gameOver: true, guessedWord: true});
-      setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 });
-      setGamesWonTotal({won: gamesWonTotal.won + 1 });
+      var ids = localStorage.getObject('idsWon');
+      console.log('got',ids);
+      if(ids){
+        ids = ids.split(',');
+      } else {
+        ids = [];
+      }
+      if(!ids.includes(correctWord)){
+        gamesPlayedCount();
+        gamesWon();
+        winAttemptCount();
+        setGameOver({gameOver: true, guessedWord: true});
+        setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 });
+        setGamesWonTotal({won: gamesWonTotal.won + 1 });
+        ids.push(correctWord);
+        console.log("pushed",ids);
+        var joined = ids.join(",");
+        console.log('save joined',joined);
+        localStorage.setObject('idsWon',joined);
+      } else {
+        console.log('you already guessed this riddle');
+      }
       return;
     }
 

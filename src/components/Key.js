@@ -12,8 +12,12 @@ function Key({keyVal, bigKey, disabled}) {
             onSelectLetter(keyVal);
         }
     }
+    let keyClass = "";
+    if(bigKey){ keyClass = "big" }
+    if(disabled){ keyClass = "disabled" }
+    //console.log('!!!KEY VARS',keyVal,bigKey,disabled,keyClass);
     return (
-        <div className="key" id={bigKey ? "big" : disabled && "disabled"} onClick={selectLetter}>
+        <div className={`key ${keyClass}`} onClick={selectLetter}>
             {keyVal}
         </div>
     )
