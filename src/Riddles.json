@@ -213,5 +213,64 @@
 		"id": 43,
 		"question": "This can be yellow, red, pink or white. It is delicate and fragrant and you better not forget to give some water to me regularly! What am it?",
 		"answer": "Roses"
+	},
+	{
+		"id": 44,
+		"question": "A mother and father have four daughters, and each daughter has one brother. How many people are in the family?",
+		"answer": "Seven"
+	},
+	{
+		"id": 45,
+		"question": "I am going fast, and I am standing still. I am transferring people and things all over the word. I have seats but I can’t fly. I make a sound that kids would like. What am i?",
+		"answer": "Train"
+	},
+	{
+		"id": 46,
+		"question": "I am going out when you are sad or when you are happy. Other times you want to hide me but its hard so please don’t try it. What am I?",
+		"answer": "Tears"
+	},
+	{
+		"id": 47,
+		"question": "What is tall, dark/grey, and invisible?",
+		"answer": "Smoke"
+	},
+	{
+		"id": 48,
+		"question": "Turn me on my side, and I am everything. Cut me in half and I am nothing. What am I?",
+		"answer": "Eight"
+	},
+	{
+		"id": 49,
+		"question": "What a child can make that no one can ever see?",
+		"answer": "Noise"
+	},
+	{
+		"id": 50,
+		"question": "I no longer have eyes, but once I could see. I have a mouth, but I can’t talk, now I’m white and empty. What am I?",
+		"answer": "Skull"
+	},
+	{
+		"id": 51,
+		"question": "It feeds everyone, but it can’t eat?",
+		"answer": "Spoon"
+	},
+	{
+		"id": 52,
+		"question": "It’s shorter than the rest and when is happy is up",
+		"answer": "Thumb"
+	},
+	{
+		"id": 53,
+		"question": "Lovely and round, I'm shimmery white, grown in the darkness, a lady's delight. What am I?",
+		"answer": "Pearl"
+	},
+	{
+		"id": 54,
+		"question": "We have words, but we never speak. What are we?",
+		"answer": "Books"
+	}{
+		"id": 55,
+		"question": "Which one of Santa’s reindeer used to work for Proctor and Gamble?",
+		"answer": "Comet"
 	}
 ]
