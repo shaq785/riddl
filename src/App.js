@@ -6,7 +6,6 @@ import Alert from './components/Alert';
 import {createContext, useState, useEffect} from 'react';
 import { boardDefault, generateWordSet } from "./Words";
 import { useLocalStorage } from "./useLocalStorage";
-import dateFormat from 'dateformat';
 
 
 // import { generateRiddleSet } from "./Riddles"
@@ -45,8 +44,6 @@ function App() {
   // const [riddleSet, setRiddleSet] = useState(new Set());
   // const [correctRiddle, setCorrectRiddle] = useState("")
 
-  const [riddleIdVal, setRiddleIdVal] = useState({riddleIdVal: 0});
-
   Storage.prototype.setObject = function(key, value) {
     this.setItem(key, JSON.stringify(value));
   }
@@ -62,11 +59,6 @@ function App() {
       setQuestion(words.todaysQuestion);
     });
   }, []);
-
-  function newGame(gamesWonLS) {
-    setRiddleIdVal({ riddleIdVal: riddleIdVal + 1} );
-    return riddleIdVal;
-  }
 
 
   function gamesPlayedCount(gamesPlayedLS) {
@@ -234,18 +226,6 @@ function App() {
 
   }
 
-  const onNewGame = () => {
-    var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-    var nextDayFormat = dateFormat(currentDate, "mmmm, dd, yyyy");
-    var todaysDate = new Date();
-    var todaysDateFormat = dateFormat(todaysDate, "mmmm, dd, yyyy");
-    if(todaysDateFormat === nextDayFormat && riddleIdVal < 44){
-      newGame();
-    } else{
-        setRiddleIdVal({ riddleIdVal: 0 });
-    }
-
-}
 
   
 
@@ -264,7 +244,9 @@ function App() {
   
   return (
     <div className="app">
-      <nav><h1>Riddl</h1></nav>
+      <nav>
+        <h1>Riddl</h1>
+      </nav>
       <AppContext.Provider
         value={{
           board,
@@ -277,7 +259,6 @@ function App() {
           onDelete,
           onEnter,
           setDisabledLetters,
-          onNewGame,
           disabledLetters,
           gameOver,
           gamesPlayedTotal,

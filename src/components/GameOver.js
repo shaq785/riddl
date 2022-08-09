@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react'
 import { AppContext } from '../App'
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import Timer from './Timer';
-import dateFormat from 'dateformat';
+// import dateFormat from 'dateformat';
 import Modal from 'react-bootstrap/Modal'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -23,12 +23,12 @@ function GameOver(props) {
     const winPerWhole = Math.round(winPer);
 
 
-    var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-    var day = currentDate.getDate()
-    var month = currentDate.getMonth() + 1
-    var year = currentDate.getFullYear()
-    var nextDay = year + "-" + month + "-" + day
-    var nextDayFormat = dateFormat(nextDay, "mmmm, dd, yyyy");
+    // var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+    // var day = currentDate.getDate()
+    // var month = currentDate.getMonth() + 1
+    // var year = currentDate.getFullYear()
+    // var nextDay = year + "-" + month + "-" + day
+    // var nextDayFormat = dateFormat(nextDay, "mmmm, dd, yyyy");
     
     
     return (
@@ -68,7 +68,7 @@ function GameOver(props) {
                     </Modal.Body>
                     <Modal.Footer>
                         <h4>Next Riddl:</h4>
-                        <Timer deadline={nextDayFormat} />
+                        <Timer />
                     </Modal.Footer>
             </Modal>
         </ThemeProvider>

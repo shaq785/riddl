@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import dateFormat from 'dateformat';
 
 class Timer extends Component {
   constructor(props) {
@@ -10,17 +11,25 @@ class Timer extends Component {
       seconds: 0
     };
   }
+  
 
   
+  
   componentDidMount() {
-    this.getTimeUntil(this.props.deadline);
     setInterval(() => this.getTimeUntil(this.props.deadline), 1000);
   }
   leading0(num) {
     return num < 10 ? "0" + num : num;
   }
-  getTimeUntil(deadline) {
-    const time = Date.parse(deadline) - Date.parse(new Date());
+  getTimeUntil() {
+    var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+    var day = currentDate.getDate()
+    var month = currentDate.getMonth() + 1
+    var year = currentDate.getFullYear()
+    var nextDay = year + "-" + month + "-" + day
+    var nextDayFormat = dateFormat(nextDay, "mmmm, dd, yyyy");
+
+    const time = Date.parse(nextDayFormat) - Date.parse(new Date());
     
 
     if (time < 0) {
