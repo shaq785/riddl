@@ -268,9 +268,40 @@
 		"id": 54,
 		"question": "We have words, but we never speak. What are we?",
 		"answer": "Books"
-	}{
+	},
+	{
 		"id": 55,
 		"question": "Which one of Santa’s reindeer used to work for Proctor and Gamble?",
 		"answer": "Comet"
+	},
+	{
+		"id": 56,
+		"question": "What can you squeeze, but not cuddle?",
+		"answer": "Juice"
+	},
+	{
+		"id": 57,
+		"question": "You know, I wumbo, You wumbo, He she me wumbo, wumbo, Wumboing, We'll have thee wumbo, Wumborama, Wumbology, The study of wumbo? It's first grade SpongeBob!",
+		"answer": "Wumbo"
+	},
+	{
+		"id": 58,
+		"question": "On Christmas Eve, when Santa leaves his workshop at the North Pole, what direction does he travel?",
+		"answer": "South"
+	},
+	{
+		"id": 59,
+		"question": "What can you fill a bucket with to make it lighter?",
+		"answer": "Holes"
+	},
+	{
+		"id": 60,
+		"question": "What falls yet never breaks?",
+		"answer": "Night"
+	},
+	{
+		"id": 61,
+		"question": "Who is that with a neck and no head, two arms and no hands?",
+		"answer": "Shirt"
 	}
 ]

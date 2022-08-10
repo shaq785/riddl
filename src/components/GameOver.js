@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CloseButton from 'react-bootstrap/CloseButton';
+import AttempBar from './attemptBar';
 
 
 
@@ -21,6 +22,8 @@ function GameOver(props) {
 
     const winPer = ((props.gamesWon) / (props.gamesPlayed)) * 100;
     const winPerWhole = Math.round(winPer);
+
+    const totalWinAttempts = props.firstAttempt + props.secAttempt + props.thirdAttempt + props.fourthAttempt;
 
 
     // var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
@@ -53,11 +56,11 @@ function GameOver(props) {
                         <Row>
                             <Col>Guess Distribution</Col>
                         </Row>
-                        <Row className="flex-col">
-                            <Col>1: {props.firstAttempt}</Col>
-                            <Col>2: {props.secAttempt}</Col>
-                            <Col>3: {props.thirdAttempt}</Col>
-                            <Col>4: {props.fourthAttempt}</Col>
+                        <Row className="flex-col chart">
+                            <Col>1: <AttempBar amount={props.firstAttempt} total={totalWinAttempts} /></Col>
+                            <Col>2: <AttempBar amount={props.secAttempt} total={totalWinAttempts}/></Col>
+                            <Col>3: <AttempBar amount={props.thirdAttempt} total={totalWinAttempts} /></Col>
+                            <Col>4: <AttempBar amount={props.fourthAttempt} total={totalWinAttempts} /></Col>
                         </Row>
                     </Modal.Header>
                     <Modal.Body>
