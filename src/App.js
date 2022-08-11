@@ -156,10 +156,12 @@ function App() {
 //     }
 // }
 
+  //DYNAMIC VARIABLES BASED ON ANSWER LETTER POS
+  const lastLetterPos = correctWord.length;
 
   
   const onSelectLetter = (keyVal) => {
-    if (currAttempt.letterPos > 4) return;
+    if (currAttempt.letterPos > lastLetterPos) return;
     const newBoard = [...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
     setBoard(newBoard)
@@ -175,10 +177,10 @@ function App() {
   }
 
   const onEnter = () => {
-    if (currAttempt.letterPos !== 5) return;
+    if (currAttempt.letterPos !== lastLetterPos) return;
 
     let currWord = "";
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i < lastLetterPos; i++){
       currWord += board[currAttempt.attempt][i];
     }
 
@@ -268,7 +270,7 @@ function App() {
         <Alert />
         <div className="game">
           <h2>{question}</h2>
-          <Board />
+          <Board word={correctWord}/>
           <Keyboard />
           {gameOver.gameOver ? 
             <GameOver 

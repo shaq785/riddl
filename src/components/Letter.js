@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../App';
 
-function Letter({letterPos, attemptVal}) {
+function Letter({letterPos, attemptVal, id}) {
     const {board, correctWord, currAttempt, setDisabledLetters} = useContext(AppContext);
     const letter = board[attemptVal][letterPos];
 
@@ -19,7 +19,7 @@ function Letter({letterPos, attemptVal}) {
      }, [currAttempt.attempt]);
     //console.log('letter state',letterState); 
     return (
-        <div className={`letter ${letterState || ""}`}>
+        <div className={`letter ${letterState || ""}`} id={id}>
             {""}
             {letter}
         </div>
