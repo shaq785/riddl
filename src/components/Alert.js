@@ -1,16 +1,18 @@
-import React from 'react'
+import React, {useContext} from 'react';
+import { AppContext } from '../App';
 
-function Alert() {
-
-
+  
+function Alert(props) {
+    const {activeAlert} = useContext(AppContext);
+    const newAlert = (activeAlert.alert ? 'active' : '');
+    console.log('NEW ALERT', newAlert)
     return (
-        <div className="onOrientation">
-            <h1>Wrong Way!</h1>
-
-            <p>Please rotate your device to portrait</p>
+        <div>
+            <p  className={newAlert, "alert"}>{props.text}</p>
         </div>
 
     )
 }
 
 export default Alert
+

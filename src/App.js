@@ -2,10 +2,11 @@ import './App.css';
 import Board from './components/Board';
 import Keyboard from './components/Keyboard';
 import GameOver from './components/GameOver';
+import Statistics from './components/Stats';
 import Alert from './components/Alert';
 import {createContext, useState, useEffect} from 'react';
-import { boardDefault, generateWordSet } from "./Words";
-import { useLocalStorage } from "./useLocalStorage";
+import {boardDefault, generateWordSet } from "./Words";
+import {useLocalStorage} from "./useLocalStorage";
 
 
 // import { generateRiddleSet } from "./Riddles"
@@ -83,7 +84,7 @@ function App() {
     const thirdAttempt = localStorage.getItem('third');
     const fourthAttempt = localStorage.getItem('fourth');
 
-    console.log("Current Attempt", currAttempt.attempt);
+    // console.log("Current Attempt", currAttempt.attempt);
 
     if(currAttempt.attempt === 0 ){
       localStorage.setItem('first', Number(firstAttempt) + 1);
@@ -158,7 +159,14 @@ function App() {
 
   //DYNAMIC VARIABLES BASED ON ANSWER LETTER POS
   const lastLetterPos = correctWord.length;
+  const [alertText, setalertText] = useState("");
+  const [activeAlert, setactiveAlert] = useState({alert: false});
+  // const alertText = "";
 
+  const onNewAlert = (e) =>{
+    setactiveAlert({alert: true});
+    console.log('ALERT CHANGE', activeAlert)
+  }
   
   const onSelectLetter = (keyVal) => {
     if (currAttempt.letterPos > lastLetterPos) return;
@@ -177,8 +185,11 @@ function App() {
   }
 
   const onEnter = () => {
-    if (currAttempt.letterPos !== lastLetterPos) return;
-
+    if (currAttempt.letterPos !== lastLetterPos){
+      setalertText("Not enough letters");
+      onNewAlert();
+      return false;
+    }
     let currWord = "";
     for(let i = 0; i < lastLetterPos; i++){
       currWord += board[currAttempt.attempt][i];
@@ -187,13 +198,14 @@ function App() {
     if (wordSet.has(currWord.toLowerCase())) {
       setCurrAttempt({attempt: currAttempt.attempt + 1, letterPos: 0});
     }else {
-      alert("Word Not Found");
-      return false;
+      setalertText("Word Not Found");
+      onNewAlert();
+      return;
     }
 
     if (currWord.toLowerCase() === correctWord.toLowerCase()){
       var ids = localStorage.getObject('idsWon');
-      console.log('got',ids);
+      // console.log('got',ids);
       if(ids){
         ids = ids.split(',');
       } else {
@@ -207,12 +219,12 @@ function App() {
         setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 });
         setGamesWonTotal({won: gamesWonTotal.won + 1 });
         ids.push(correctWord);
-        console.log("pushed",ids);
+        // console.log("pushed",ids);
         var joined = ids.join(",");
-        console.log('save joined',joined);
+        // console.log('save joined',joined);
         localStorage.setObject('idsWon',joined);
       } else {
-        console.log('you already guessed this riddle');
+        // console.log('you already guessed this riddle');
       }
       return;
     }
@@ -222,14 +234,12 @@ function App() {
       // gamesLost();
       setGameOver({gameOver: true, guessedWord: false})
       setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 })
-      console.log("Win Attempt", currAttempt.attempt)
+      // console.log("Win Attempt", currAttempt.attempt)
       // setGamesLostTotal({lost: gamesLostTotal.lost + 1 }) 
     }
 
   }
 
-
-  
 
   // const onOrientation = () => {
     
@@ -248,6 +258,14 @@ function App() {
     <div className="app">
       <nav>
         <h1>Riddl</h1>
+        <Statistics 
+            gamesPlayed={gamesPlayedTotal.played} 
+            gamesWon={gamesWonTotal.won} 
+            firstAttempt={winAttempt.first}
+            secAttempt={winAttempt.second}
+            thirdAttempt={winAttempt.third}
+            fourthAttempt={winAttempt.fourth} 
+          />
       </nav>
       <AppContext.Provider
         value={{
@@ -264,12 +282,14 @@ function App() {
           disabledLetters,
           gameOver,
           gamesPlayedTotal,
-          gamesWonTotal
+          gamesWonTotal,
+          onNewAlert,
+          activeAlert
         }}
       >
-        <Alert />
         <div className="game">
           <h2>{question}</h2>
+          <Alert status={activeAlert.alert} text={alertText}/>
           <Board word={correctWord}/>
           <Keyboard />
           {gameOver.gameOver ? 

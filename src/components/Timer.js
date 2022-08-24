@@ -16,7 +16,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
 const Timer = ({  }) => {
   var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
   var nextDayFormat = dateFormat(currentDate, "mmmm, dd, yyyy");
-  console.log(currentDate);
+  // console.log(currentDate);
   const [days, hours, minutes, seconds] = useCountdown(nextDayFormat);
     return (
       <ShowCounter
