@@ -165,6 +165,9 @@ function App() {
 
   const onNewAlert = (e) =>{
     setactiveAlert({alert: true});
+    setTimeout(() => {
+      setactiveAlert({alert: false});
+    }, 2000);
     console.log('ALERT CHANGE', activeAlert)
   }
   

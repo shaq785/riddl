@@ -264,6 +264,22 @@ h2{
   font-weight: bold;
 }
 
+.alert{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #7B6E98;
+  bottom: 80%;
+  opacity: 0;
+  transition: all 1s;
+}
+
+.alert.active{
+  opacity: 1;
+  bottom: 82%;
+  transition: all 1s;
+}
+
 @media (pointer:none), (pointer:coarse) {
   @media (orientation: portrait) {
     .onOrientation{

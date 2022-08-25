@@ -8,7 +8,7 @@ function Alert(props) {
     console.log('NEW ALERT', newAlert)
     return (
         <div>
-            <p  className={newAlert, "alert"}>{props.text}</p>
+            <p  className={newAlert + " alert"}>{props.text}</p>
         </div>
 
     )
