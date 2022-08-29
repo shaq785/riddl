@@ -316,7 +316,7 @@ h2{
 @media only screen and (max-width: 600px) {
 
   .game {
-    height: calc(100vh - 60px);
+    /* height: calc(100vh - 60px); */
     padding-top: 0;
   }
   nav h1{

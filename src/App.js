@@ -33,6 +33,7 @@ function App() {
   const [secAttempt] = useLocalStorage('second', 0);
   const [thirdAttempt] = useLocalStorage('third', 0);
   const [fourthAttempt] = useLocalStorage('fourth', 0);
+  // const [winMsg] = localStorage.setItem('winAlertMsg', "")
 
 
   const [gamesPlayedTotal, setGamesPlayedTotal] = useState({played: gamesPlayedLS});
@@ -44,6 +45,9 @@ function App() {
 
   // const [riddleSet, setRiddleSet] = useState(new Set());
   // const [correctRiddle, setCorrectRiddle] = useState("")
+  
+  const [ids] = useLocalStorage('idsWon', '');
+  
 
   Storage.prototype.setObject = function(key, value) {
     this.setItem(key, JSON.stringify(value));
@@ -58,6 +62,25 @@ function App() {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysAnswer);
       setQuestion(words.todaysQuestion);
+
+      if (window.performance) {
+        if (performance.navigation.type == 1) {
+          console.log( "This page is reloaded" );
+          if (ids.includes(words.todaysAnswer)) {
+            setGameOver({gameOver: true ,guessedWord: true})
+            setWinAttempt({
+              first: winAttempt.first, 
+              second: winAttempt.second, 
+              third: winAttempt.third, 
+              fourth: winAttempt.fourth,
+              winAlert: "Already Played" })
+          } else{
+            setGameOver({gameOver: false})
+          }
+        } else {
+          console.log( "This page is not reloaded");
+        }
+      }
     });
   }, []);
 
@@ -78,6 +101,7 @@ function App() {
     return newWinCount;
   }
 
+  
   function winAttemptCount() {
     const firstAttempt = localStorage.getItem('first');
     const secAttempt = localStorage.getItem('second');
@@ -88,6 +112,7 @@ function App() {
 
     if(currAttempt.attempt === 0 ){
       localStorage.setItem('first', Number(firstAttempt) + 1);
+      localStorage.setItem('winAlertMsg', "Wow, So Smart!");
       setWinAttempt({
         first: winAttempt.first + 1, 
         second: winAttempt.second, 
@@ -96,6 +121,7 @@ function App() {
         winAlert: "Wow, So Smart!" })
     } else if(currAttempt.attempt === 1){
       localStorage.setItem('second', Number(secAttempt) + 1);
+      localStorage.setItem('winAlertMsg', "Amazing Job!");
       setWinAttempt({
         first: winAttempt.first, 
         second: winAttempt.second + 1, 
@@ -104,6 +130,7 @@ function App() {
         winAlert: "Amazing Job!" })
     }else if(currAttempt.attempt === 2){
       localStorage.setItem('third', Number(thirdAttempt) + 1);
+      localStorage.setItem('winAlertMsg', "Pretty Average" );
       setWinAttempt({
         first: winAttempt.first, 
         second: winAttempt.second, 
@@ -112,6 +139,7 @@ function App() {
         winAlert: "Pretty Average" });
     }else{
       localStorage.setItem('fourth', Number(fourthAttempt) + 1);
+      localStorage.setItem('winAlertMsg', "Ooo Close Call");
       setWinAttempt({
         first: winAttempt.first, 
         second: winAttempt.second, 
@@ -122,40 +150,6 @@ function App() {
     
     return;
   }
-
-  // function gamesLost(gamesLostLS) {
-  //   const lossCount = localStorage.getItem('gamesLostLSTotal');
-  //   const LossCurrent = Number(lossCount) + 1;
-  //   let newLossCount = String(LossCurrent);
-  //   localStorage.setItem('gamesLostLSTotal', newLossCount)
-  //   return newLossCount;
-  // }
-
-  
-
-
-  // useEffect(() => {
-  //   generateRiddleSet().then((riddles) => {
-  //     setRiddleSet(riddles.riddleSet);
-  //     setCorrectRiddle(riddles.todaysRiddle);
-  //   });
-  // }, []);
-
-//   const NewGame = () =>{
-//     var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-//     var nextDayFormat = dateFormat(currentDate, "mmmm, dd, yyyy");
-//     var todaysDate = new Date();
-//     var todaysDateFormat = dateFormat(todaysDate, "mmmm, dd, yyyy");
-//     if(todaysDateFormat === nextDayFormat && riddleIdVal < 44){
-//         setRiddleIdVal({ riddleIdVal: riddleIdVal + 1} );
-//         const riddleIdVal = riddleIdVal + 1;
-//         return riddleIdVal;
-//     } else{
-//         setRiddleIdVal({ riddleIdVal: 0 });
-//         const riddleIdVal = riddleIdVal;
-//         return riddleIdVal;
-//     }
-// }
 
   //DYNAMIC VARIABLES BASED ON ANSWER LETTER POS
   const lastLetterPos = correctWord.length;
@@ -173,6 +167,8 @@ function App() {
   
   const onSelectLetter = (keyVal) => {
     if (currAttempt.letterPos > lastLetterPos) return;
+    if (gameOver.gameOver === true) return;
+    console.log(gameOver.gameOver, "GAME OVER")
     const newBoard = [...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
     setBoard(newBoard)
@@ -227,7 +223,8 @@ function App() {
         // console.log('save joined',joined);
         localStorage.setObject('idsWon',joined);
       } else {
-        // console.log('you already guessed this riddle');
+        console.log('you already guessed this riddle');
+        setGameOver({gameOver: true, guessedWord: true});
       }
       return;
     }
@@ -237,11 +234,15 @@ function App() {
       // gamesLost();
       setGameOver({gameOver: true, guessedWord: false})
       setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 })
+      // console.log('save joined',joined);
+      localStorage.setObject('idsWon',correctWord);
       // console.log("Win Attempt", currAttempt.attempt)
       // setGamesLostTotal({lost: gamesLostTotal.lost + 1 }) 
     }
 
-  }
+  };
+
+  
 
 
   // const onOrientation = () => {
@@ -291,8 +292,8 @@ function App() {
         }}
       >
         <div className="game">
-          <h2>{question}</h2>
           <Alert status={activeAlert.alert} text={alertText}/>
+          <h2>{question}</h2>
           <Board word={correctWord}/>
           <Keyboard />
           {gameOver.gameOver ? 
