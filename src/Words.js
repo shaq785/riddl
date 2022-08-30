@@ -60,11 +60,24 @@ export const generateWordSet = async () => {
         .then((result) => {
             const wordArr = result.split("\n");
             //const riddleId = Riddles[Math.floor(Math.random()*Riddles.length)];
-            const riddleId = Riddles[dayNumber];
+            const ren = str => str.replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);});
+            const newRiddles = []
+            Riddles.map((item, index) => {
+                const newItem = {
+                    question: ren(item.question),
+                    answer: ren(item.answer),
+                    id: item.id
+                }
+                //console.log(newItem);
+                newRiddles.push(newItem);
+            })
+
+            const riddleId = newRiddles[dayNumber];
             wordSet = new Set(wordArr);
             todaysRiddle = riddleId;
             todaysQuestion = todaysRiddle.question;
             todaysAnswer = todaysRiddle.answer;
+            console.log(todaysAnswer);
         });
 
     return {wordSet, todaysWord, todaysQuestion, todaysAnswer};
