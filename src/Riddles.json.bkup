@@ -1,0 +1,512 @@
+[
+	{
+	  "id": 1,
+	  "question": "You know, I wumbo, You wumbo, He she me wumbo, wumbo, Wumboing, We'll have thee wumbo, Wumborama, Wumbology, The study of wumbo? It's first grade SpongeBob!",
+	  "answer": "Wumbo"
+	},
+	{
+	  "id": 2,
+	  "question": "A mother and father have four daughters, and each daughter has one brother. How many people are in the family?",
+	  "answer": "Seven"
+	},
+	{
+	  "id": 3,
+	  "question": "What five-letter word becomes shorter when you add two letters to it?",
+	  "answer": "Short"
+	},
+	{
+	  "id": 4,
+	  "question": "I drive men mad, For the love of me, Easily beaten, never free. What am I?",
+	  "answer": "Gold"
+	},
+	{
+	  "id": 5,
+	  "question": "What can you squeeze, but not cuddle?",
+	  "answer": "Juice"
+	},
+	{
+	  "id": 6,
+	  "question": "What gets wetter as it dries?",
+	  "answer": "Towel"
+	},
+	{
+	  "id": 7,
+	  "question": "What has a face and two hands but no arms or legs?",
+	  "answer": "Clock"
+	},
+	{
+	  "id": 8,
+	  "question": "What has many keys but can’t open a single lock?",
+	  "answer": "Piano"
+	},
+	{
+	  "id": 9,
+	  "question": "It takes two people to do this",
+	  "answer": "Tango"
+	},
+	{
+	  "id": 10,
+	  "question": "What can you catch but not throw?",
+	  "answer": "Cold"
+	},
+	{
+	  "id": 11,
+	  "question": "Every day people all over the world come to see me, but they rarely stay for more than a few minutes. I am considered very dirty by most people yet they still wouldn’t want a home without me.",
+	  "answer": "Toilet"
+	},
+	{
+	  "id": 12,
+	  "question": "What loses its head in the morning and gets it back at night?",
+	  "answer": "Pillow"
+	},
+	{
+	  "id": 13,
+	  "question": "At night, they come without being fetched. By day they are lost without being stolen. What are they?",
+	  "answer": "Stars"
+	},
+	{
+	  "id": 14,
+	  "question": "What invention lets you look right through a wall?",
+	  "answer": "Window"
+	},
+	{
+	  "id": 15,
+	  "question": "What word of five letters has only one left when two letters are removed?",
+	  "answer": "Alone"
+	},
+	{
+	  "id": 16,
+	  "question": "It’s shorter than the rest and when is happy is up",
+	  "answer": "Thumb"
+	},
+	{
+	  "id": 17,
+	  "question": "What has a bottom at the top?",
+	  "answer": "Legs"
+	},
+	{
+	  "id": 18,
+	  "question": "What word becomes larger when you add the letter “r” to it?",
+	  "answer": "Large"
+	},
+	{
+	  "id": 19,
+	  "question": "David's father has three sons: Snap, Crackle, and ?",
+	  "answer": "David"
+	},
+	{
+	  "id": 20,
+	  "question": "I am a kind of coat that can only be put on when wet. What am I?",
+	  "answer": "Paint"
+	},
+	{
+	  "id": 21,
+	  "question": "Guided, I am scraping along, leaving behind my snow-­white dust against that which I am scraping, for when I am scraping, I must. What am I?",
+	  "answer": "Chalk"
+	},
+	{
+	  "id": 22,
+	  "question": "I have branches, but no fruit, trunk, or leaves. What am I?",
+	  "answer": "Bank"
+	},
+	{
+	  "id": 23,
+	  "question": "You heard me before, yet you hear me again. Then I die, ’till you call me again.",
+	  "answer": "Echo"
+	},
+	{
+	  "id": 24,
+	  "question": "If all Wibbles are Criggles, all Borkins are Kwumblins, no Hoggles are Borkins, and all Criggles are Borkins, is it true that all Borkins are Criggles?",
+	  "answer": "False"
+	},
+	{
+	  "id": 25,
+	  "question": "What is tall, dark/grey, and invisible?",
+	  "answer": "Smoke"
+	},
+	{
+	  "id": 26,
+	  "question": "I can shave 25 times a day and still have a beard? What am I?",
+	  "answer": "Barber"
+	},
+	{
+	  "id": 27,
+	  "question": "It feeds everyone, but it can’t eat?",
+	  "answer": "Spoon"
+	},
+	{
+	  "id": 28,
+	  "question": "I no longer have eyes, but once I could see. I have a mouth, but I can’t talk, now I’m white and empty. What am I?",
+	  "answer": "Skull"
+	},
+	{
+	  "id": 29,
+	  "question": "If you drop me, I’m sure to crack but smile at me, and I’ll always smile back. What am I?",
+	  "answer": "Mirror"
+	},
+	{
+	  "id": 30,
+	  "question": "Black and white, patterns, print or stripes, this is my make-up and I live in the wild. What am I?",
+	  "answer": "Zebra"
+	},
+	{
+	  "id": 31,
+	  "question": "I can fly but have no wings. I can cry but I have no eyes. Wherever I go, darkness follows me. What am I?",
+	  "answer": "Clouds"
+	},
+	{
+	  "id": 32,
+	  "question": "What has teeth but cannot bite?",
+	  "answer": "Comb"
+	},
+	{
+	  "id": 33,
+	  "question": "What has six faces but does not wear makeup, and twenty-one eyes but cannot see?",
+	  "answer": "Dice"
+	},
+	{
+	  "id": 34,
+	  "question": "What do you call a boomerang that doesn’t come back?",
+	  "answer": "Stick"
+	},
+	{
+	  "id": 35,
+	  "question": "What can you fill a bucket with to make it lighter?",
+	  "answer": "Holes"
+	},
+	{
+	  "id": 36,
+	  "question": "What is the best month for a parade?",
+	  "answer": "March"
+	},
+	{
+	  "id": 37,
+	  "question": "I am an odd number. Take away a letter and I become even. What number am I?",
+	  "answer": "Seven"
+	},
+	{
+	  "id": 38,
+	  "question": "The person who makes it has no need for it; the person who buys it has no use for it. The person who uses it can neither see nor feel it. What is it?",
+	  "answer": "Coffin"
+	},
+	{
+	  "id": 39,
+	  "question": "I can be sad, I can be happy, I can be angry and cry, I come with many faces and sometimes many sizes. I am able to communicate things words often cannot. What am I?",
+	  "answer": "Emoji"
+	},
+	{
+	  "id": 40,
+	  "question": "Sometimes I shine, sometimes I’m dull, sometimes I am big, and sometimes I am small. I can be pointy, I can be curved, and don’t ask me questions because even though I’m sharp, I’m not smart enough to answer you. What am I?",
+	  "answer": "Knife"
+	},
+	{
+	  "id": 41,
+	  "question": "Kids get high on me, I make them go wild and then they crash whenever they have too much of me? Am I a drug? What am I?",
+	  "answer": "Sugar"
+	},
+	{
+	  "id": 42,
+	  "question": "Turn me on my side, and I am everything. Cut me in half and I am nothing. What am I?",
+	  "answer": "Eight"
+	},
+	{
+	  "id": 43,
+	  "question": "Handy when you need to measure something or run a kingdom.",
+	  "answer": "Ruler"
+	},
+	{
+	  "id": 44,
+	  "question": "There is nothing outside, nothing on the inside light as a feather, yet ten men cannot lift it. What is it?",
+	  "answer": "Bubble"
+	},
+	{
+	  "id": 45,
+	  "question": "What is harder to catch the faster you run?",
+	  "answer": "Breath"
+	},
+	{
+	  "id": 46,
+	  "question": "What has an eye but cannot see?",
+	  "answer": "Needle"
+	},
+	{
+	  "id": 47,
+	  "question": "There’s only one word in the dictionary that’s spelled wrong. What is it?",
+	  "answer": "Wrong"
+	},
+	{
+	  "id": 48,
+	  "question": "Without the first two letters, I’m an intelligent animal. Without the first three letters, I’m a subject in school. And, without the first four letters, I’m the letter “e.” What am I?",
+	  "answer": "Grape"
+	},
+	{
+	  "id": 49,
+	  "question": "I am a weighty currency.",
+	  "answer": "Pound"
+	},
+	{
+	  "id": 50,
+	  "question": "Which one of Santa’s reindeer used to work for Proctor and Gamble?",
+	  "answer": "Comet"
+	},
+	{
+	  "id": 51,
+	  "question": "What has four legs, but can't walk?",
+	  "answer": "Table"
+	},
+	{
+	  "id": 52,
+	  "question": "I can be liquid or solid, sometimes I bubble and you can find me in every home. What am I? ",
+	  "answer": "Soap"
+	},
+	{
+	  "id": 53,
+	  "question": "What falls yet never breaks?",
+	  "answer": "Night"
+	},
+	{
+	  "id": 54,
+	  "question": "What a child can make that no one can ever see?",
+	  "answer": "Noise"
+	},
+	{
+	  "id": 55,
+	  "question": "People buy me to eat but never eat me. What am I?",
+	  "answer": "Plates"
+	},
+	{
+	  "id": 56,
+	  "question": "People make me, save me, change me, raise me. What am I?",
+	  "answer": "Money"
+	},
+	{
+	  "id": 57,
+	  "question": "This on this. That on that. Growing tall, But never fat. What am I?",
+	  "answer": "Stack"
+	},
+	{
+	  "id": 58,
+	  "question": "What english word retains the same pronunciation, even after you take away four of its five letters?",
+	  "answer": "Queue"
+	},
+	{
+	  "id": 59,
+	  "question": "I am going out when you are sad or when you are happy. Other times you want to hide me but its hard so please don’t try it. What am I?",
+	  "answer": "Tears"
+	},
+	{
+	  "id": 60,
+	  "question": "What can fill a room but takes up no space?",
+	  "answer": "Light"
+	},
+	{
+	  "id": 61,
+	  "question": "What is half of two plus two?",
+	  "answer": "Three"
+	},
+	{
+	  "id": 62,
+	  "question": "We have words, but we never speak. What are we?",
+	  "answer": "Books"
+	},
+	{
+	  "id": 63,
+	  "question": "Which of the following words don’t belong in the group and why? CORSET, COSTER, SECTOR, ESCORT, COURTS",
+	  "answer": "Courts"
+	},
+	{
+	  "id": 64,
+	  "question": "What do you answer even though it never asks you questions?",
+	  "answer": "Phone"
+	},
+	{
+	  "id": 65,
+	  "question": "You measure my life in hours, and I serve you by expiring. I’m quick when I’m thin and slow when I’m fat. The wind is my enemy. What am I?",
+	  "answer": "Candle"
+	},
+	{
+	  "id": 66,
+	  "question": "What has four fingers and one thumb, but is not alive?",
+	  "answer": "Glove"
+	},
+	{
+	  "id": 67,
+	  "question": "What sits in a corner while traveling all around the world?",
+	  "answer": "Stamp"
+	},
+	{
+	  "id": 68,
+	  "question": "I go up and I go down, sometimes I am curvy and sometimes I am straight. What am I? ",
+	  "answer": "Stairs"
+	},
+	{
+	  "id": 69,
+	  "question": "One strand dangles. Two strands twist. Three or more can fashion this.",
+	  "answer": "Braids"
+	},
+	{
+	  "id": 70,
+	  "question": "I can be cracked. And, I can be made. I can be told. And, I can be played. What am I?",
+	  "answer": "Joke"
+	},
+	{
+	  "id": 71,
+	  "question": "I am going fast, and I am standing still. I am transferring people and things all over the word. I have seats but I can’t fly. I make a sound that kids would like. What am i?",
+	  "answer": "Train"
+	},
+	{
+	  "id": 72,
+	  "question": "What tastes better than it smells?",
+	  "answer": "Tongue"
+	},
+	{
+	  "id": 73,
+	  "question": "What word looks the same upside down and backwards?",
+	  "answer": "Swims"
+	},
+	{
+	  "id": 74,
+	  "question": "What runs all around a backyard, yet never moves?",
+	  "answer": "Fence"
+	},
+	{
+	  "id": 75,
+	  "question": "You bury me when I’m alive and dig me up when I’m dead. What am I?",
+	  "answer": "Plant"
+	},
+	{
+	  "id": 76,
+	  "question": "What doesn't get any wetter, no matter how much rain falls on it?",
+	  "answer": "Water"
+	},
+	{
+	  "id": 77,
+	  "question": " Only one color, but not one size. Stuck at the bottom, yet easily flies. Present in sun, but not in rain. Doing no harm and feeling no pain. What is it?",
+	  "answer": "Shadow"
+	},
+	{
+	  "id": 78,
+	  "question": "Who is that with a neck and no head, two arms and no hands?",
+	  "answer": "Shirt"
+	},
+	{
+	  "id": 79,
+	  "question": " I can run but not walk. The thought is not far behind me. What am I?",
+	  "answer": "Nose"
+	},
+	{
+	  "id": 80,
+	  "question": "What type of cheese is made backward?",
+	  "answer": "Edam"
+	},
+	{
+	  "id": 81,
+	  "question": "Steve is younger than Pete but older than Nicky. Larry is older than Erica who is older than Steve. Pete is older than Larry. Who is the middle child?",
+	  "answer": "Erica"
+	},
+	{
+	  "id": 82,
+	  "question": "When I’m used, I’m useless. Once offered, soon rejected. In desperation, I’m often expressed. What am I?",
+	  "answer": "Excuse"
+	},
+	{
+	  "id": 83,
+	  "question": "Walk on the living. They don’t even mumble. Walk on the dead. They mutter and grumble. What are they?",
+	  "answer": "Leaves"
+	},
+	{
+	  "id": 84,
+	  "question": "This can be yellow, red, pink or white. It is delicate and fragrant and you better not forget to give some water to me regularly! What am it?",
+	  "answer": "Roses"
+	},
+	{
+	  "id": 85,
+	  "question": "I’m covered with eyes, but I can’t see and live mostly in the dark. What am I?",
+	  "answer": "Potato"
+	},
+	{
+	  "id": 86,
+	  "question": "You enter a dark room. You have only one match. There is an oil lamp, a furnace, and a stove in the room. Which would you light first?",
+	  "answer": "Match"
+	},
+	{
+	  "id": 87,
+	  "question": "I can be crushed to pieces but only if I am given away first, I can be clogged and attacked but that’s usually my own doing. No matter how many problems I have, you wouldn’t dare let me go. What am I?",
+	  "answer": "Heart"
+	},
+	{
+	  "id": 88,
+	  "question": "What belongs to you, but everyone else uses it?",
+	  "answer": "Name"
+	},
+	{
+	  "id": 89,
+	  "question": "People say I put doctors out of business, sometimes I am sour, sometimes I am sweet, I can be eaten and can also be drunk. What am I?",
+	  "answer": "Apple"
+	},
+	{
+	  "id": 90,
+	  "question": "I like to twirl my body but keep my head up high. After I go in, everything becomes tight. What am I?",
+	  "answer": "Screw"
+	},
+	{
+	  "id": 91,
+	  "question": "Take off my skin and I won't cry, but you will, What am I?",
+	  "answer": "Onion"
+	},
+	{
+	  "id": 92,
+	  "question": "Lovely and round, I'm shimmery white, grown in the darkness, a lady's delight. What am I?",
+	  "answer": "Pearl"
+	},
+	{
+	  "id": 93,
+	  "question": "I have married many times, but have always been single. Who am I?",
+	  "answer": "Priest"
+	},
+	{
+	  "id": 94,
+	  "question": "I go around in circles, but always straight ahead. I never complain no matter where I am led. What am I?",
+	  "answer": "Wheel"
+	},
+	{
+	  "id": 95,
+	  "question": "I am an animal and a hair product. What am I?",
+	  "answer": "Moose"
+	},
+	{
+	  "id": 96,
+	  "question": "I only come out at night, but not every night and I am not sleeping in the day. In fact I am always there, you just often don’t see me. Some people think I look like a bunny, whereas others claim I look like a person.",
+	  "answer": "Moon"
+	},
+	{
+	  "id": 97,
+	  "question": "What has holes on each side, but can still can hold water?",
+	  "answer": "Sponge"
+	},
+	{
+	  "id": 98,
+	  "question": "On Christmas Eve, when Santa leaves his workshop at the North Pole, what direction does he travel?",
+	  "answer": "South"
+	},
+	{
+	  "id": 99,
+	  "question": "What has a mouth but can't chew?",
+	  "answer": "River"
+	},
+	{
+	  "id": 100,
+	  "question": "A tasty reward given to well behaved dogs and kids",
+	  "answer": "Treat"
+	},
+	{
+	  "id": 101,
+	  "question": "What four-letter word can be written forward, backward, or upside down, and can still be read from left to right?",
+	  "answer": "Noon"
+	},
+	{
+	  "id": 102,
+	  "question": "You see him flying around carrying bows and arrows and once he hits you with it, all you feel is love not sorrow. He must have hit us both. Who is he?",
+	  "answer": "Cupid"
+	}
+  ]
