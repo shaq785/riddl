@@ -22,8 +22,8 @@ function Statistics(props) {
     const winPerWhole = Math.round(winPer);
 
 
-    console.log(winPerWhole)
-    console.log(winPerWhole > 0 ? winPerWhole : '0', 'Win %')
+    // console.log(winPerWhole)
+    // console.log(winPerWhole > 0 ? winPerWhole : '0', 'Win %')
 
     const totalWinAttempts = props.firstAttempt + props.secAttempt + props.thirdAttempt + props.fourthAttempt;
 

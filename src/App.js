@@ -21,13 +21,19 @@ function App() {
   const [correctWord, setCorrectWord] = useState("");
   const [question, setQuestion] = useState("");
   const [disabledLetters, setDisabledLetters] = useState([]);
-  const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false})
+  const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false});
+  
+  const [saveAttempt, setSaveAttempt] = useState({saveFirst: "", saveSecond: "", saveThird: "", saveFourth: ""});
 
 
   //LOCAL STORAGE
   const [gamesPlayedLS] = useLocalStorage('gamesPlayedLSTotal', 0);
   const [gamesWonLS] = useLocalStorage('gamesWonLSTotal', 0);
   // const [gamesLostLS] = useLocalStorage('gamesLostLSTotal', 0);
+
+  localStorage.setItem('board', board);
+  const savedBoard = localStorage.getItem('board');
+
 
   const [firstAttempt] = useLocalStorage('first', 0);
   const [secAttempt] = useLocalStorage('second', 0);
@@ -64,8 +70,8 @@ function App() {
       setQuestion(words.todaysQuestion);
 
       if (window.performance) {
-        if (performance.navigation.type == 1) {
-          console.log( "This page is reloaded" );
+        if (performance.navigation.type === 1) {
+          // console.log( "This page is reloaded" );
           if (ids.includes(words.todaysAnswer)) {
             setGameOver({gameOver: true ,guessedWord: true})
             setWinAttempt({
@@ -77,8 +83,13 @@ function App() {
           } else{
             setGameOver({gameOver: false})
           }
+
+          // if(savedBoard !== [...board] ){
+          //   // setBoard(savedBoard);
+          //   console.log('BOARD WAS SAVED',JSON.parse(savedBoard), board);
+          // }
         } else {
-          console.log( "This page is not reloaded");
+          // console.log( "This page is not reloaded");
         }
       }
     });
@@ -162,15 +173,16 @@ function App() {
     setTimeout(() => {
       setactiveAlert({alert: false});
     }, 2000);
-    console.log('ALERT CHANGE', activeAlert)
+    // console.log('ALERT CHANGE', activeAlert)
   }
   
   const onSelectLetter = (keyVal) => {
     if (currAttempt.letterPos > lastLetterPos) return;
     if (gameOver.gameOver === true) return;
-    console.log(gameOver.gameOver, "GAME OVER")
+    // console.log(gameOver.gameOver, "GAME OVER")
     const newBoard = [...board]
     newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
+    console.log(keyVal)
     setBoard(newBoard)
     setCurrAttempt({...currAttempt, letterPos: currAttempt.letterPos + 1})
   }
@@ -223,7 +235,7 @@ function App() {
         // console.log('save joined',joined);
         localStorage.setObject('idsWon',joined);
       } else {
-        console.log('you already guessed this riddle');
+        // console.log('you already guessed this riddle');
         setGameOver({gameOver: true, guessedWord: true});
       }
       return;
@@ -239,6 +251,46 @@ function App() {
       // console.log("Win Attempt", currAttempt.attempt)
       // setGamesLostTotal({lost: gamesLostTotal.lost + 1 }) 
     }
+
+    //SAVING ATTEMPT VALUES
+    const newBoard = [...board]
+    if(currAttempt.attempt === 0 ){
+      setSaveAttempt({
+        saveFirst: currWord,
+        saveSecond: saveAttempt.saveSecond,
+        saveThird: saveAttempt.saveThird,
+        saveFourth: saveAttempt.saveFourth
+      })
+      // localStorage.setItem('board', JSON.stringify(newBoard));
+      // const newBoard = savedBoard;
+      
+    } else if(currAttempt.attempt === 1){
+      setSaveAttempt({
+        saveFirst: saveAttempt.saveFirst,
+        saveSecond: currWord,
+        saveThird: saveAttempt.saveThird,
+        saveFourth: saveAttempt.saveFourth
+      })
+
+      // const newBoard = savedBoard;
+    }else if(currAttempt.attempt === 2){
+      setSaveAttempt({
+        saveFirst: saveAttempt.saveFirst,
+        saveSecond: saveAttempt.saveSecond,
+        saveThird: currWord,
+        saveFourth: saveAttempt.saveFourth
+      })
+    }else{
+      setSaveAttempt({
+        saveFirst: saveAttempt.saveFirst,
+        saveSecond: saveAttempt.saveSecond,
+        saveThird: saveAttempt.saveThird,
+        saveFourth: currWord
+      })
+    }
+
+    console.log('SAVE ATTEMPT', saveAttempt);
+    console.log('BOARD', newBoard);
 
   };
 

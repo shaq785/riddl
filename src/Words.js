@@ -54,7 +54,7 @@ export const generateWordSet = async () => {
         dayNumber = dayNumber - Riddles.length;
     }
 
-    console.log('Difference between the origin date and todays date:',originDate.toUTCString(),todayDate.toUTCString(),dayNumber);
+    // console.log('Difference between the origin date and todays date:',originDate.toUTCString(),todayDate.toUTCString(),dayNumber);
     await fetch(wordBank)
         .then((response) => response.text())
         .then((result) => {
