@@ -77,7 +77,7 @@ export const generateWordSet = async () => {
             todaysRiddle = riddleId;
             todaysQuestion = todaysRiddle.question;
             todaysAnswer = todaysRiddle.answer;
-            console.log(todaysAnswer);
+            // console.log(todaysAnswer);
         });
 
     return {wordSet, todaysWord, todaysQuestion, todaysAnswer};

@@ -22,17 +22,12 @@ function App() {
   const [question, setQuestion] = useState("");
   const [disabledLetters, setDisabledLetters] = useState([]);
   const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false});
-  
-  const [saveAttempt, setSaveAttempt] = useState({saveFirst: "", saveSecond: "", saveThird: "", saveFourth: ""});
 
 
   //LOCAL STORAGE
   const [gamesPlayedLS] = useLocalStorage('gamesPlayedLSTotal', 0);
   const [gamesWonLS] = useLocalStorage('gamesWonLSTotal', 0);
-  // const [gamesLostLS] = useLocalStorage('gamesLostLSTotal', 0);
-
-  localStorage.setItem('board', board);
-  const savedBoard = localStorage.getItem('board');
+  // const [gamesLostLS] = useLocalStorage('gamesLostLSTotal', 0);=
 
 
   const [firstAttempt] = useLocalStorage('first', 0);
@@ -40,6 +35,8 @@ function App() {
   const [thirdAttempt] = useLocalStorage('third', 0);
   const [fourthAttempt] = useLocalStorage('fourth', 0);
   // const [winMsg] = localStorage.setItem('winAlertMsg', "")
+
+  const newBoard = [...board];
 
 
   const [gamesPlayedTotal, setGamesPlayedTotal] = useState({played: gamesPlayedLS});
@@ -51,6 +48,15 @@ function App() {
 
   // const [riddleSet, setRiddleSet] = useState(new Set());
   // const [correctRiddle, setCorrectRiddle] = useState("")
+
+  var firstAttWord = localStorage.getItem('firstAttWord');
+  var secAttWord = localStorage.getItem('secAttWord');
+  var thirdAttWord = localStorage.getItem('thirdAttWord');
+  var fourthAttWord = localStorage.getItem('fourthAttWord');
+
+  const [saveAttempt, setSaveAttempt] = useState({saveFirst: firstAttWord, saveSecond: secAttWord, saveThird: thirdAttWord, saveFourth: fourthAttWord});
+
+  console.log('SAVE ATTEMPTS', saveAttempt)
   
   const [ids] = useLocalStorage('idsWon', '');
   
@@ -84,10 +90,16 @@ function App() {
             setGameOver({gameOver: false})
           }
 
-          // if(savedBoard !== [...board] ){
-          //   // setBoard(savedBoard);
-          //   console.log('BOARD WAS SAVED',JSON.parse(savedBoard), board);
-          // }
+          // if(newBoard !== [...board] ){
+          if(firstAttWord !== ""){
+            const newBoard = [
+              Array.from(saveAttempt.saveFirst),
+              Array.from(saveAttempt.saveSecond),
+              Array.from(saveAttempt.saveThird),
+              Array.from(saveAttempt.saveFourth)
+            ]
+            setBoard(newBoard);
+          }
         } else {
           // console.log( "This page is not reloaded");
         }
@@ -168,6 +180,7 @@ function App() {
   const [activeAlert, setactiveAlert] = useState({alert: false});
   // const alertText = "";
 
+
   const onNewAlert = (e) =>{
     setactiveAlert({alert: true});
     setTimeout(() => {
@@ -177,7 +190,7 @@ function App() {
   }
   
   const onSelectLetter = (keyVal) => {
-    if (currAttempt.letterPos > lastLetterPos) return;
+    if (currAttempt.letterPos > lastLetterPos - 1) return false;
     if (gameOver.gameOver === true) return;
     // console.log(gameOver.gameOver, "GAME OVER")
     const newBoard = [...board]
@@ -253,7 +266,6 @@ function App() {
     }
 
     //SAVING ATTEMPT VALUES
-    const newBoard = [...board]
     if(currAttempt.attempt === 0 ){
       setSaveAttempt({
         saveFirst: currWord,
@@ -261,8 +273,7 @@ function App() {
         saveThird: saveAttempt.saveThird,
         saveFourth: saveAttempt.saveFourth
       })
-      // localStorage.setItem('board', JSON.stringify(newBoard));
-      // const newBoard = savedBoard;
+      localStorage.setItem('firstAttWord', currWord);
       
     } else if(currAttempt.attempt === 1){
       setSaveAttempt({
@@ -271,6 +282,7 @@ function App() {
         saveThird: saveAttempt.saveThird,
         saveFourth: saveAttempt.saveFourth
       })
+      localStorage.setItem('secAttWord', currWord);
 
       // const newBoard = savedBoard;
     }else if(currAttempt.attempt === 2){
@@ -280,6 +292,7 @@ function App() {
         saveThird: currWord,
         saveFourth: saveAttempt.saveFourth
       })
+      localStorage.setItem('thirdAttWord', currWord);
     }else{
       setSaveAttempt({
         saveFirst: saveAttempt.saveFirst,
@@ -287,28 +300,37 @@ function App() {
         saveThird: saveAttempt.saveThird,
         saveFourth: currWord
       })
+      localStorage.setItem('fourthAttWord', currWord);
     }
 
+    // localStorage.setItem('firstAttWord', saveAttempt.saveFirst);
+    // localStorage.setItem('secAttWord', saveAttempt.saveSecond);
+    // localStorage.setItem('thirdAttWord', saveAttempt.saveThird);
+    // localStorage.setItem('fourthAttWord', saveAttempt.saveFourth);
+
+    var firstAttWord = localStorage.getItem('firstAttWord');
+    var secAttWord = localStorage.getItem('secAttWord');
+    var thirdAttWord = localStorage.getItem('thirdAttWord');
+    var fourthAttWord = localStorage.getItem('fourthAttWord');
+
+    const newBoard = [
+      Array.from(firstAttWord),
+      Array.from(secAttWord),
+      Array.from(thirdAttWord),
+      Array.from(fourthAttWord)
+    ]
+
+
+
+
     console.log('SAVE ATTEMPT', saveAttempt);
-    console.log('BOARD', newBoard);
+    console.log('NEW BOARD', newBoard, 'OLD BOARD', [...board]);
 
   };
 
-  
+  console.log(newBoard, 'NEW BOARD');
 
 
-  // const onOrientation = () => {
-    
-  //   if(window.orientation == 0)
-  //   {
-  //       setShow({show: false})
-  //   }
-  //   else
-  //   {
-  //       setShow({show: true})
-  //   }
-
-  // }
   
   return (
     <div className="app">
