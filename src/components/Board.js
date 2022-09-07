@@ -12,7 +12,7 @@ function Board(props) {
 
             {[...Array(wordLength)].map(
                 (item, index) => (
-                <Letter id={index} letterPos={index} attemptVal={0} />
+                <Letter key={`at1-${index}`} id={index} letterPos={index} attemptVal={0}  />
                 )
             )}
 
@@ -26,21 +26,21 @@ function Board(props) {
             <div className="gameRow">
                 {[...Array(wordLength)].map(
                     (item, index) => (
-                    <Letter id={index} letterPos={index} attemptVal={1} />
+                    <Letter key={`at2-${index}`} id={index} letterPos={index} attemptVal={1} />
                     )
                 )}
             </div>
             <div className="gameRow">
                 {[...Array(wordLength)].map(
                     (item, index) => (
-                    <Letter id={index} letterPos={index} attemptVal={2} />
+                    <Letter key={`at3-${index}`} id={index} letterPos={index} attemptVal={2} />
                     )
                 )}
             </div>
              <div className="gameRow">
                 {[...Array(wordLength)].map(
                     (item, index) => (
-                    <Letter id={index} letterPos={index} attemptVal={3} />
+                    <Letter key={`at4-${index}`} id={index} letterPos={index} attemptVal={3} />
                     )
                 )}  
             </div>

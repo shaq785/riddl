@@ -3,6 +3,7 @@ import { AppContext } from '../App'
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import Timer from './Timer';
 // import dateFormat from 'dateformat';
+import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -25,7 +26,28 @@ function GameOver(props) {
 
     const totalWinAttempts = props.firstAttempt + props.secAttempt + props.thirdAttempt + props.fourthAttempt;
 
-
+    const shareHelper = () => {
+        //let shareText = "";
+        const dt = new Date().toDateString();
+        const loc = window.location.href;
+        const shr = props.shareGrid.map((item,i) => {
+            if (item[0].length === 0) return null;
+            return <span key={i}><br/>{`${item.join('')}`}</span>;
+            //return null;
+        });
+        return <div>
+                <p>Riddl: {dt}<span className="sr-only">{loc}</span></p>
+                {shr}
+            </div>
+    }
+    const handleShareClick = () => {
+        let range = document.createRange();
+        range.selectNode(document.getElementById("share-text"));
+        window.getSelection().removeAllRanges(); // clear current selection
+        window.getSelection().addRange(range); // to select text
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();// to deselect
+    }
     // var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
     // var day = currentDate.getDate()
     // var month = currentDate.getMonth() + 1
@@ -68,6 +90,14 @@ function GameOver(props) {
                             <span>Correct Answer:</span> {correctWord}
                         </h3>
                         {gameOver.guessedWord && (<p> You guessed in {currAttempt.attempt} attempt(s).</p>)}
+                        <Row>
+                            <Col className="share-area">
+                                <div id="share-text">
+                                    {shareHelper()}
+                                </div>
+                                <Button type="primary" onClick={handleShareClick}>Copy to clipboard</Button>
+                            </Col>
+                        </Row>
                     </Modal.Body>
                     <Modal.Footer>
                         <h4>Next Riddl:</h4>

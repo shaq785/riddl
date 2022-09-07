@@ -15,7 +15,17 @@ import {useLocalStorage} from "./useLocalStorage";
 export const AppContext = createContext();
 
 function App() {
+
+  const boardValidationGridDefault = [
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""]
+];
+
+
   const [board, setBoard] = useState(boardDefault);
+  const [boardValidationGrid, setBoardValidationGrid] = useState(boardValidationGridDefault);
   const [currAttempt, setCurrAttempt] = useState({attempt: 0, letterPos: 0});
   const [wordSet, setWordSet] = useState(new Set());
   const [correctWord, setCorrectWord] = useState("");
@@ -183,13 +193,41 @@ function App() {
     setBoard(newBoard)
     setCurrAttempt({...currAttempt, letterPos: currAttempt.letterPos - 1})
   }
+  const validateBoard = () => {
+    // console.log(board, boardValidationGrid);
+    let newValBoard = [...boardValidationGrid];
+    board.map((item,index) => {
+      item.map((ltr, i ) => {
+        //console.log(correctWord, ltr, index, i);
+        ltr = ltr.toLowerCase();
+        const lowerCorrectWord = correctWord.toLowerCase();
+        if(ltr === ""){
+          return null;
+        }
+        if(ltr === lowerCorrectWord[i]){
+          newValBoard[index][i] = "🟩";
+          return null;
+        }
+        if(lowerCorrectWord.indexOf(ltr) < 0){
+          newValBoard[index][i] = "⬛";
+          return null;
+        }
+        newValBoard[index][i] = "🟨";
+        return null;
+      })
+      setBoardValidationGrid(newValBoard);
+      return null;
+    });
 
+    //console.log(boardValidationGrid)
+  }
   const onEnter = () => {
     if (currAttempt.letterPos !== lastLetterPos){
       setalertText("Not enough letters");
       onNewAlert();
       return false;
     }
+    validateBoard();
     let currWord = "";
     for(let i = 0; i < lastLetterPos; i++){
       currWord += board[currAttempt.attempt][i];
@@ -211,6 +249,8 @@ function App() {
       } else {
         ids = [];
       }
+
+ 
       if(!ids.includes(correctWord)){
         gamesPlayedCount();
         gamesWon();
@@ -220,11 +260,14 @@ function App() {
         setGamesWonTotal({won: gamesWonTotal.won + 1 });
         ids.push(correctWord);
         // console.log("pushed",ids);
+
+        // console.log(board,boardValidationGrid);
         var joined = ids.join(",");
         // console.log('save joined',joined);
         localStorage.setObject('idsWon',joined);
       } else {
-        // console.log('you already guessed this riddle');
+        console.log('you already guessed this riddle');
+        // console.log(board,boardValidationGrid);
       }
       return;
     }
@@ -270,6 +313,7 @@ function App() {
       <AppContext.Provider
         value={{
           board,
+          boardValidationGrid,
           setBoard,
           currAttempt,
           setCurrAttempt,
@@ -294,6 +338,7 @@ function App() {
           <Keyboard />
           {gameOver.gameOver ? 
             <GameOver 
+              shareGrid={boardValidationGrid}
               gamesPlayed={gamesPlayedTotal.played} 
               gamesWon={gamesWonTotal.won} 
               firstAttempt={winAttempt.first}
