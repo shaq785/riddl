@@ -21,7 +21,9 @@ function Statistics(props) {
     const winPer = ((props.gamesWon) / (props.gamesPlayed)) * 100;
     const winPerWhole = Math.round(winPer);
 
-    // console.log(winPerWhole, 'Win %')
+
+    // console.log(winPerWhole)
+    // console.log(winPerWhole > 0 ? winPerWhole : '0', 'Win %')
 
     const totalWinAttempts = props.firstAttempt + props.secAttempt + props.thirdAttempt + props.fourthAttempt;
 
@@ -54,7 +56,7 @@ function Statistics(props) {
                                 <p><span className="d-block">{props.gamesPlayed}</span> Played</p>
                             </Col>
                             <Col>
-                                <p><span className="d-block">{winPerWhole !== undefined ? winPerWhole : '0'}%</span> Win %</p>
+                                <p><span className="d-block">{winPerWhole > 0 ? winPerWhole : '0'}%</span> Win %</p>
                             </Col>
                         </Row>
                         <Row>

@@ -89,7 +89,7 @@ function GameOver(props) {
                         <h3>
                             <span>Correct Answer:</span> {correctWord}
                         </h3>
-                        {gameOver.guessedWord && (<p> You guessed in {currAttempt.attempt} attempt(s).</p>)}
+                       {gameOver.guessedWord && currAttempt.attempt > 0 && (<p> You guessed in {currAttempt.attempt} attempt(s).</p>)}
                         <Row>
                             <Col className="share-area">
                                 <div id="share-text">
