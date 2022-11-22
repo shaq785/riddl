@@ -4,227 +4,228 @@ import Keyboard from './components/Keyboard';
 import GameOver from './components/GameOver';
 import Statistics from './components/Stats';
 import Alert from './components/Alert';
-import {createContext, useState, useEffect} from 'react';
+import React from "react";
 import {boardDefault, generateWordSet } from "./Words";
-import {useLocalStorage} from "./useLocalStorage";
 
 
 // import { generateRiddleSet } from "./Riddles"
 // import Riddles from "./Riddles"
 
-export const AppContext = createContext();
-
-function App() {
-
-  const boardValidationGridDefault = [
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""]
-];
-
-
-  const [board, setBoard] = useState(boardDefault);
-  const [boardValidationGrid, setBoardValidationGrid] = useState(boardValidationGridDefault);
-  const [currAttempt, setCurrAttempt] = useState({attempt: 0, letterPos: 0});
-  const [wordSet, setWordSet] = useState(new Set());
-  const [correctWord, setCorrectWord] = useState("");
-  const [question, setQuestion] = useState("");
-  const [disabledLetters, setDisabledLetters] = useState([]);
-  const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false});
+const defaultState = {
+  board: [...boardDefault],
+  boardValidationGrid:  [...boardDefault],
+  currAttempt: {attempt: 0, letterPos: 0},
+  wordSet: new Set(),
+  correctWord: "",
+  question: "",
+  disabledLetters: [],
+  gameOver: {gameOver: false, guessedWord: false},
 
 
-  //LOCAL STORAGE
-  const [gamesPlayedLS] = useLocalStorage('gamesPlayedLSTotal', 0);
-  const [gamesWonLS] = useLocalStorage('gamesWonLSTotal', 0);
-  // const [gamesLostLS] = useLocalStorage('gamesLostLSTotal', 0);=
 
 
-  const [firstAttempt] = useLocalStorage('first', 0);
-  const [secAttempt] = useLocalStorage('second', 0);
-  const [thirdAttempt] = useLocalStorage('third', 0);
-  const [fourthAttempt] = useLocalStorage('fourth', 0);
-  // const [winMsg] = localStorage.setItem('winAlertMsg', "")
+  firstAttempt: 0,
+  secAttempt: 0,
+  thirdAttempt: 0,
+  fourthAttempt: 0,
 
-  const newBoard = [...board];
+  newBoard: [...boardDefault],
 
 
-  const [gamesPlayedTotal, setGamesPlayedTotal] = useState({played: gamesPlayedLS});
-  const [gamesWonTotal, setGamesWonTotal] = useState({won: gamesWonLS});
-  // const [gamesLostTotal, setGamesLostTotal] = useState({lost: gamesLostLS});
-  const [winAttempt, setWinAttempt] = useState({first: firstAttempt, second: secAttempt, third: thirdAttempt, fourth: fourthAttempt, winAlert: ""});
+  gamesPlayedTotal: {played: 0},
+  gamesWonTotal: {won: 0},
+  winAttempt: {
+    first: 0, 
+    second: 0, 
+    third: 0, 
+    fourth: 0, 
+    winAlert: ""
+  },
 
-  // const dailyTimer = dateFormat(nextDay, "mmmm dS, yyyy");
 
-  // const [riddleSet, setRiddleSet] = useState(new Set());
-  // const [correctRiddle, setCorrectRiddle] = useState("")
+  firstAttWord: "",
+  secAttWord: "",
+  thirdAttWord: "",
+  fourthAttWord: "",
 
-  var firstAttWord = localStorage.getItem('firstAttWord');
-  var secAttWord = localStorage.getItem('secAttWord');
-  var thirdAttWord = localStorage.getItem('thirdAttWord');
-  var fourthAttWord = localStorage.getItem('fourthAttWord');
+  saveAttempt: {
+    saveFirst: "",
+    saveSecond: "",
+    saveThird: "",
+    saveFourth: "",
+  },
 
-  const [saveAttempt, setSaveAttempt] = useState({saveFirst: firstAttWord, saveSecond: secAttWord, saveThird: thirdAttWord, saveFourth: fourthAttWord});
+  ids: [],
 
-  console.log('SAVE ATTEMPTS', saveAttempt)
+
+  alertText: "",
+  activeAlert: {alert: false},
+}
+export const AppContext = React.createContext();
+
+Storage.prototype.setObject = function(key, value) {
+  this.setItem(key, JSON.stringify(value));
+}
+Storage.prototype.getObject = function(key) {
+    var value = this.getItem(key);
+    return value && JSON.parse(value);
+}
+
+
+
+class App extends React.Component {
+  state = {...defaultState}
+
+ 
+
+  componentDidMount() {
+    //Get state from local storage
+    let storedState = localStorage.getObject("state");
+    this.setState({
+      ...storedState
+    }, function(){
+      //do stuff after updating the stored state.
+      //--------------- code from old useEffect(() => {},[]);
+      let ns = {...this.state};
+      generateWordSet().then((words) => {
+        ns.wordSet = words.wordSet;
+        ns.correctWord = words.todaysAnswer;
+        ns.question = words.todaysQuestion;
   
-  const [ids] = useLocalStorage('idsWon', '');
+        if (window.performance) {
+          if (performance.navigation.type === 1) {
+            // console.log( "This page is reloaded" );
+            if (this.state.ids.includes(words.todaysAnswer)) {
+              ns.gameOver = {gameOver: true ,guessedWord: true};
+              ns.winAttempt = {
+                first: this.state.winAttempt.first, 
+                second: this.state.winAttempt.second, 
+                third: this.state.winAttempt.third, 
+                fourth: this.state.winAttempt.fourth,
+                winAlert: "Already Played" };
+            } else{
+              ns.gameOver = {gameOver: false};
+            }
   
-
-  Storage.prototype.setObject = function(key, value) {
-    this.setItem(key, JSON.stringify(value));
-  }
-  Storage.prototype.getObject = function(key) {
-      var value = this.getItem(key);
-      return value && JSON.parse(value);
-  }
-
-  useEffect(() => {
-    generateWordSet().then((words) => {
-      setWordSet(words.wordSet);
-      setCorrectWord(words.todaysAnswer);
-      setQuestion(words.todaysQuestion);
-
-      if (window.performance) {
-        if (performance.navigation.type === 1) {
-          // console.log( "This page is reloaded" );
-          if (ids.includes(words.todaysAnswer)) {
-            setGameOver({gameOver: true ,guessedWord: true})
-            setWinAttempt({
-              first: winAttempt.first, 
-              second: winAttempt.second, 
-              third: winAttempt.third, 
-              fourth: winAttempt.fourth,
-              winAlert: "Already Played" })
-          } else{
-            setGameOver({gameOver: false})
+            // if(newBoard !== [...board] ){
+            if(this.state.firstAttWord !== ""){
+              const newBoard = [
+                Array.from(this.state.saveAttempt.saveFirst),
+                Array.from(this.state.saveAttempt.saveSecond),
+                Array.from(this.state.saveAttempt.saveThird),
+                Array.from(this.state.saveAttempt.saveFourth)
+              ]
+              ns.board = newBoard;
+            }
+          } else {
+            // console.log( "This page is not reloaded");
           }
-
-          // if(newBoard !== [...board] ){
-          if(firstAttWord !== ""){
-            const newBoard = [
-              Array.from(saveAttempt.saveFirst),
-              Array.from(saveAttempt.saveSecond),
-              Array.from(saveAttempt.saveThird),
-              Array.from(saveAttempt.saveFourth)
-            ]
-            setBoard(newBoard);
-          }
-        } else {
-          // console.log( "This page is not reloaded");
         }
-      }
+        this.setState(ns);
+      });
     });
-  }, []);
-
-
-  function gamesPlayedCount(gamesPlayedLS) {
-      const count = localStorage.getItem('gamesPlayedLSTotal');
-      const current = Number(count) + 1;
-      let newCount = String(current);
-      localStorage.setItem('gamesPlayedLSTotal', newCount)
-      return newCount;
+    
   }
 
-  function gamesWon(gamesWonLS) {
-    const winCount = localStorage.getItem('gamesWonLSTotal');
-    const winCurrent = Number(winCount) + 1;
-    let newWinCount = String(winCurrent);
-    localStorage.setItem('gamesWonLSTotal', newWinCount)
-    return newWinCount;
+  componentDidUpdate() {
+    //Update local storage to match state
+    localStorage.setObject("state", this.state);
   }
 
+
+  //This is the method to set the context data.
+  setContext = (data) => {
+    this.setState({ data });
+  };
   
-  function winAttemptCount() {
-    const firstAttempt = localStorage.getItem('first');
-    const secAttempt = localStorage.getItem('second');
-    const thirdAttempt = localStorage.getItem('third');
-    const fourthAttempt = localStorage.getItem('fourth');
+  winAttemptCount() {
+    let ns = {...this.state};
 
     // console.log("Current Attempt", currAttempt.attempt);
 
-    if(currAttempt.attempt === 0 ){
-      localStorage.setItem('first', Number(firstAttempt) + 1);
-      localStorage.setItem('winAlertMsg', "Wow, So Smart!");
-      setWinAttempt({
-        first: winAttempt.first + 1, 
-        second: winAttempt.second, 
-        third: winAttempt.third, 
-        fourth: winAttempt.fourth,
-        winAlert: "Wow, So Smart!" })
-    } else if(currAttempt.attempt === 1){
-      localStorage.setItem('second', Number(secAttempt) + 1);
-      localStorage.setItem('winAlertMsg', "Amazing Job!");
-      setWinAttempt({
-        first: winAttempt.first, 
-        second: winAttempt.second + 1, 
-        third: winAttempt.third, 
-        fourth: winAttempt.fourth,
-        winAlert: "Amazing Job!" })
-    }else if(currAttempt.attempt === 2){
-      localStorage.setItem('third', Number(thirdAttempt) + 1);
-      localStorage.setItem('winAlertMsg', "Pretty Average" );
-      setWinAttempt({
-        first: winAttempt.first, 
-        second: winAttempt.second, 
-        third: winAttempt.third + 1, 
-        fourth: winAttempt.fourth,
-        winAlert: "Pretty Average" });
+    if(this.state.currAttempt.attempt === 0 ){
+      ns.winAttempt = {
+        first: this.state.winAttempt.first + 1, 
+        second: this.state.winAttempt.second, 
+        third: this.state.winAttempt.third, 
+        fourth: this.state.winAttempt.fourth,
+        winAlert: "Wow, So Smart!" };
+    } else if(this.state.currAttempt.attempt === 1){
+      ns.winAttempt = {
+        first: this.state.winAttempt.first, 
+        second: this.state.winAttempt.second + 1, 
+        third: this.state.winAttempt.third, 
+        fourth: this.state.winAttempt.fourth,
+        winAlert: "Amazing Job!" };
+    }else if(this.state.currAttempt.attempt === 2){
+      ns.winAttempt = {
+        first: this.state.winAttempt.first, 
+        second: this.state.winAttempt.second, 
+        third: this.state.winAttempt.third + 1, 
+        fourth: this.state.winAttempt.fourth,
+        winAlert: "Pretty Average" };
     }else{
-      localStorage.setItem('fourth', Number(fourthAttempt) + 1);
-      localStorage.setItem('winAlertMsg', "Ooo Close Call");
-      setWinAttempt({
-        first: winAttempt.first, 
-        second: winAttempt.second, 
-        third: winAttempt.third, 
-        fourth: winAttempt.fourth + 1,
-        winAlert: "Ooo Close Call" })
+      ns.winAttempt = {
+        first: this.state.winAttempt.first, 
+        second: this.state.winAttempt.second, 
+        third: this.state.winAttempt.third, 
+        fourth: this.state.winAttempt.fourth + 1,
+        winAlert: "Ooo Close Call" };
     }
     
+    this.setState(ns);
     return;
   }
 
   //DYNAMIC VARIABLES BASED ON ANSWER LETTER POS
-  const lastLetterPos = correctWord.length;
-  const [alertText, setalertText] = useState("");
-  const [activeAlert, setactiveAlert] = useState({alert: false});
+  lastLetterPos = this.state.correctWord.length;
   // const alertText = "";
 
 
-  const onNewAlert = (e) =>{
-    setactiveAlert({alert: true});
+  onNewAlert = (e) =>{
+    let ns = {...this.state};
+    ns.activeAlert = {alert: true};
+    this.setState(ns);
     setTimeout(() => {
-      setactiveAlert({alert: false});
+      ns.activeAlert = {alert: false};
+      this.setState(ns);
     }, 2000);
+
     // console.log('ALERT CHANGE', activeAlert)
   }
   
-  const onSelectLetter = (keyVal) => {
-    if (currAttempt.letterPos > lastLetterPos - 1) return false;
-    if (gameOver.gameOver === true) return;
+  onSelectLetter = (keyVal) => {
+    let ns = {...this.state};
+    if (this.state.currAttempt.letterPos > this.state.lastLetterPos - 1) return false;
+    if (this.state.gameOver.gameOver === true) return;
     // console.log(gameOver.gameOver, "GAME OVER")
-    const newBoard = [...board]
-    newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
+    const newBoard = [...this.state.board]
+    newBoard[this.state.currAttempt.attempt][this.state.currAttempt.letterPos] = keyVal
     console.log(keyVal)
-    setBoard(newBoard)
-    setCurrAttempt({...currAttempt, letterPos: currAttempt.letterPos + 1})
+    ns.board = newBoard;
+    ns.currAttempt = {...this.state.currAttempt, letterPos: this.state.currAttempt.letterPos + 1};
+    this.setState(ns);
   }
 
-  const onDelete = () => {
-    if (currAttempt.letterPos === 0) return;
-    const newBoard = [...board]
-    newBoard[currAttempt.attempt][currAttempt.letterPos - 1] = "";
-    setBoard(newBoard)
-    setCurrAttempt({...currAttempt, letterPos: currAttempt.letterPos - 1})
+  onDelete = () => {
+    let ns = {...this.state};
+    if (this.state.currAttempt.letterPos === 0) return;
+    const newBoard = [...this.state.board]
+    newBoard[this.state.currAttempt.attempt][this.state.currAttempt.letterPos - 1] = "";
+    ns.board = newBoard;
+    ns.currAttempt = {...this.state.currAttempt, letterPos: this.state.currAttempt.letterPos - 1};
+
+    this.setState(ns);
   }
-  const validateBoard = () => {
+  validateBoard = () => {
     // console.log(board, boardValidationGrid);
-    let newValBoard = [...boardValidationGrid];
-    board.map((item,index) => {
+    let ns = {...this.state};
+    let newValBoard = [...this.state.boardValidationGrid];
+    this.state.board.map((item,index) => {
       item.map((ltr, i ) => {
         //console.log(correctWord, ltr, index, i);
         ltr = ltr.toLowerCase();
-        const lowerCorrectWord = correctWord.toLowerCase();
+        const lowerCorrectWord = this.state.correctWord.toLowerCase();
         if(ltr === ""){
           return null;
         }
@@ -239,197 +240,167 @@ function App() {
         newValBoard[index][i] = "🟨";
         return null;
       })
-      setBoardValidationGrid(newValBoard);
+      ns.boardValidationGrid = newValBoard;
+      this.setState(ns);
       return null;
     });
 
     //console.log(boardValidationGrid)
   }
-  const onEnter = () => {
-    if (currAttempt.letterPos !== lastLetterPos){
-      setalertText("Not enough letters");
-      onNewAlert();
+  onEnter = () => {
+    if (this.state.currAttempt.letterPos !== this.state.lastLetterPos){
+      this.setState({...this.state, alertText:"Not enough letters"});
+      this.onNewAlert();
       return false;
     }
-    validateBoard();
+    this.validateBoard();
     let currWord = "";
-    for(let i = 0; i < lastLetterPos; i++){
-      currWord += board[currAttempt.attempt][i];
+    for(let i = 0; i < this.state.lastLetterPos; i++){
+      currWord += this.state.board[this.state.currAttempt.attempt][i];
     }
 
-    if (wordSet.has(currWord.toLowerCase())) {
-      setCurrAttempt({attempt: currAttempt.attempt + 1, letterPos: 0});
+    if (this.state.wordSet.has(currWord.toLowerCase())) {
+      this.setState({currAttempt:{attempt: this.state.currAttempt.attempt + 1, letterPos: 0}});
     }else {
-      setalertText("Word Not Found");
-      onNewAlert();
+      this.setState({alertText:"Word Not Found"});
+      this.onNewAlert();
       return;
     }
 
-    if (currWord.toLowerCase() === correctWord.toLowerCase()){
-      var ids = localStorage.getObject('idsWon');
+    let ns = {...this.state};
+
+    if (currWord.toLowerCase() === this.state.correctWord.toLowerCase()){
       // console.log('got',ids);
-      if(ids){
-        ids = ids.split(',');
-      } else {
-        ids = [];
-      }
+      if(!ns.ids.includes(this.state.correctWord)){
+        this.winAttemptCount();
+        ns.gameOver = {gameOver: true, guessedWord: true};
+        ns.gamesPlayedTotal = {played: this.state.gamesPlayedTotal.played + 1 };
+        ns.gamesWonTotal = {won: this.state.gamesWonTotal.won + 1 };
 
- 
-      if(!ids.includes(correctWord)){
-        gamesPlayedCount();
-        gamesWon();
-        winAttemptCount();
-        setGameOver({gameOver: true, guessedWord: true});
-        setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 });
-        setGamesWonTotal({won: gamesWonTotal.won + 1 });
-        ids.push(correctWord);
-        // console.log("pushed",ids);
-
-        // console.log(board,boardValidationGrid);
-        var joined = ids.join(",");
-        // console.log('save joined',joined);
-        localStorage.setObject('idsWon',joined);
+        ns.ids.push(this.state.correctWord);
       } else {
         // console.log('you already guessed this riddle');
-        setGameOver({gameOver: true, guessedWord: true});
+        ns.gameOver = {gameOver: true, guessedWord: true};
       }
+      this.setState(ns);
       return;
     }
 
-    if (currAttempt.attempt === 3){
-      gamesPlayedCount();
+    if (this.state.currAttempt.attempt === 3){
+
+      this.gamesPlayedCount();
       // gamesLost();
-      setGameOver({gameOver: true, guessedWord: false})
-      setGamesPlayedTotal({played: gamesPlayedTotal.played + 1 })
+      ns.gameOver = {gameOver: true, guessedWord: false};
+      ns.gamesPlayedTotal = {played: this.state.gamesPlayedTotal.played + 1 };
       // console.log('save joined',joined);
-      localStorage.setObject('idsWon',correctWord);
+
+      ns.ids = this.state.correctWord;
       // console.log("Win Attempt", currAttempt.attempt)
       // setGamesLostTotal({lost: gamesLostTotal.lost + 1 }) 
     }
 
     //SAVING ATTEMPT VALUES
-    if(currAttempt.attempt === 0 ){
-      setSaveAttempt({
+    if(this.state.currAttempt.attempt === 0 ){
+      ns.saveAttempt = {
         saveFirst: currWord,
-        saveSecond: saveAttempt.saveSecond,
-        saveThird: saveAttempt.saveThird,
-        saveFourth: saveAttempt.saveFourth
-      })
-      localStorage.setItem('firstAttWord', currWord);
+        saveSecond: this.state.saveAttempt.saveSecond,
+        saveThird: this.state.saveAttempt.saveThird,
+        saveFourth: this.state.saveAttempt.saveFourth
+      };
+      ns.firstAttWord = currWord;
       
-    } else if(currAttempt.attempt === 1){
-      setSaveAttempt({
-        saveFirst: saveAttempt.saveFirst,
+    } else if(this.state.currAttempt.attempt === 1){
+      ns.saveAttempt = {
+        saveFirst: this.state.saveAttempt.saveFirst,
         saveSecond: currWord,
-        saveThird: saveAttempt.saveThird,
-        saveFourth: saveAttempt.saveFourth
-      })
-      localStorage.setItem('secAttWord', currWord);
+        saveThird: this.state.saveAttempt.saveThird,
+        saveFourth: this.state.saveAttempt.saveFourth
+      };
+      ns.secAttWord = currWord;
 
       // const newBoard = savedBoard;
-    }else if(currAttempt.attempt === 2){
-      setSaveAttempt({
-        saveFirst: saveAttempt.saveFirst,
-        saveSecond: saveAttempt.saveSecond,
+    }else if(this.state.currAttempt.attempt === 2){
+      ns.saveAttempt = {
+        saveFirst: this.state.saveAttempt.saveFirst,
+        saveSecond: this.state.saveAttempt.saveSecond,
         saveThird: currWord,
-        saveFourth: saveAttempt.saveFourth
-      })
-      localStorage.setItem('thirdAttWord', currWord);
+        saveFourth: this.state.saveAttempt.saveFourth
+      };
+      ns.thirdAttWord = currWord;
     }else{
-      setSaveAttempt({
-        saveFirst: saveAttempt.saveFirst,
-        saveSecond: saveAttempt.saveSecond,
-        saveThird: saveAttempt.saveThird,
+      ns.saveAttempt = {
+        saveFirst: this.state.saveAttempt.saveFirst,
+        saveSecond: this.state.saveAttempt.saveSecond,
+        saveThird: this.state.saveAttempt.saveThird,
         saveFourth: currWord
-      })
-      localStorage.setItem('fourthAttWord', currWord);
+      };
+      ns.fourthAttWord = currWord;
     }
 
-    // localStorage.setItem('firstAttWord', saveAttempt.saveFirst);
-    // localStorage.setItem('secAttWord', saveAttempt.saveSecond);
-    // localStorage.setItem('thirdAttWord', saveAttempt.saveThird);
-    // localStorage.setItem('fourthAttWord', saveAttempt.saveFourth);
-
-    var firstAttWord = localStorage.getItem('firstAttWord');
-    var secAttWord = localStorage.getItem('secAttWord');
-    var thirdAttWord = localStorage.getItem('thirdAttWord');
-    var fourthAttWord = localStorage.getItem('fourthAttWord');
 
     const newBoard = [
-      Array.from(firstAttWord),
-      Array.from(secAttWord),
-      Array.from(thirdAttWord),
-      Array.from(fourthAttWord)
+      Array.from(ns.firstAttWord),
+      Array.from(ns.secAttWord),
+      Array.from(ns.thirdAttWord),
+      Array.from(ns.fourthAttWord)
     ]
 
 
 
 
-    console.log('SAVE ATTEMPT', saveAttempt);
-    console.log('NEW BOARD', newBoard, 'OLD BOARD', [...board]);
-
+    console.log('SAVE ATTEMPT', ns.saveAttempt);
+    console.log('NEW BOARD', newBoard, 'OLD BOARD', [...this.state.board]);
+    ns.board = newBoard;
+    this.setState(ns);
   };
 
-  console.log(newBoard, 'NEW BOARD');
 
 
-  
-  return (
-    <div className="app">
-      <nav>
-        <h1>Riddl</h1>
-        <Statistics 
-            gamesPlayed={gamesPlayedTotal.played} 
-            gamesWon={gamesWonTotal.won} 
-            firstAttempt={winAttempt.first}
-            secAttempt={winAttempt.second}
-            thirdAttempt={winAttempt.third}
-            fourthAttempt={winAttempt.fourth} 
-          />
-      </nav>
-      <AppContext.Provider
-        value={{
-          board,
-          boardValidationGrid,
-          setBoard,
-          currAttempt,
-          setCurrAttempt,
-          correctWord,
-          question,
-          onSelectLetter,
-          onDelete,
-          onEnter,
-          setDisabledLetters,
-          disabledLetters,
-          gameOver,
-          gamesPlayedTotal,
-          gamesWonTotal,
-          onNewAlert,
-          activeAlert
-        }}
-      >
-        <div className="game">
-          <Alert status={activeAlert.alert} text={alertText}/>
-          <h2>{question}</h2>
-          <Board word={correctWord}/>
-          <Keyboard />
-          {gameOver.gameOver ? 
-            <GameOver 
-              shareGrid={boardValidationGrid}
-              gamesPlayed={gamesPlayedTotal.played} 
-              gamesWon={gamesWonTotal.won} 
-              firstAttempt={winAttempt.first}
-              secAttempt={winAttempt.second}
-              thirdAttempt={winAttempt.third}
-              fourthAttempt={winAttempt.fourth}
-              winAlert={winAttempt.winAlert}
-             /> 
-             : ''
-          }
+  render(){
+    const publicMethods = {
+      onSelectLetter: this.onSelectLetter,
+      onEnter: this.onEnter,
+      onDelete: this.onDelete,
+      setContext: this.setContext,
+    }
+    return (
+      <AppContext.Provider value={{...this.state, ...publicMethods}}>
+        <div className="app">
+          <nav>
+            <h1>Riddl</h1>
+            <Statistics 
+                gamesPlayed={this.state.gamesPlayedTotal.played} 
+                gamesWon={this.state.gamesWonTotal.won} 
+                firstAttempt={this.state.winAttempt.first}
+                secAttempt={this.state.winAttempt.second}
+                thirdAttempt={this.state.winAttempt.third}
+                fourthAttempt={this.state.winAttempt.fourth} 
+              />
+          </nav>
+            <div className="game">
+              <Alert status={this.state.activeAlert.alert} text={this.state.alertText}/>
+              <h2>{this.state.question}</h2>
+              <Board word={this.state.correctWord}/>
+              <Keyboard />
+              {this.state.gameOver.gameOver ? 
+                <GameOver 
+                  shareGrid={this.state.boardValidationGrid}
+                  gamesPlayed={this.state.gamesPlayedTotal.played} 
+                  gamesWon={this.state.gamesWonTotal.won} 
+                  firstAttempt={this.state.winAttempt.first}
+                  secAttempt={this.state.winAttempt.second}
+                  thirdAttempt={this.state.winAttempt.third}
+                  fourthAttempt={this.state.winAttempt.fourth}
+                  winAlert={this.state.winAttempt.winAlert}
+                /> 
+                : ''
+              }
+            </div>
         </div>
       </AppContext.Provider>
-    </div>
-  );
+    );
+  }
 }
+
 
 export default App;
