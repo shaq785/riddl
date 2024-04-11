@@ -17,7 +17,7 @@ function Statistics(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    //console.log(props.gamesWon);
     const winPer = ((props.gamesWon) / (props.gamesPlayed)) * 100;
     const winPerWhole = Math.round(winPer);
 
@@ -38,8 +38,8 @@ function Statistics(props) {
     
     return (
         <ThemeProvider>
-            <Button variant="" className="statsBtn" onClick={handleShow}>
-                <img src="/images/stats.svg" alt=""/>
+            <Button variant=""  onClick={handleShow}>
+                <img src="images/stats.svg" alt=""/>
                 <span className="sr-only">Statistics</span>
             </Button>
             <Modal 
@@ -49,29 +49,42 @@ function Statistics(props) {
                 keyboard={false}
             >
                     <Modal.Header>
-                        <h1>Statistics</h1>
+                        <h1>Riddl</h1>
                         <CloseButton variant="white" onClick={handleClose} />
                         <Row>
-                            <Col>
-                                <p><span className="d-block">{props.gamesPlayed}</span> Played</p>
+                            <Col><h2>Statistics</h2></Col>
+                        </Row>
+                        <Row className='winStats'>
+                            <Col className='gamesPlayed'>
+                                <p><span>{props.gamesPlayed}</span></p> 
+                                <p>games played</p>
                             </Col>
-                            <Col>
-                                <p><span className="d-block">{winPerWhole > 0 ? winPerWhole : '0'}%</span> Win %</p>
+                            <Col className='winPer'>
+                                <p><span>{winPerWhole > 0 ? winPerWhole : '0'}%</span></p> 
+                                <p>of games won</p>
                             </Col>
                         </Row>
                         <Row>
-                            <Col>Guess Distribution</Col>
+                            <Col><h2>Guess Distribution</h2></Col>
                         </Row>
                         <Row className="flex-col chart">
-                            <Col>1: <AttempBar amount={props.firstAttempt} total={totalWinAttempts} /></Col>
-                            <Col>2: <AttempBar amount={props.secAttempt} total={totalWinAttempts}/></Col>
-                            <Col>3: <AttempBar amount={props.thirdAttempt} total={totalWinAttempts} /></Col>
-                            <Col>4: <AttempBar amount={props.fourthAttempt} total={totalWinAttempts} /></Col>
+                            <Col><p>1 try</p> <AttempBar amount={props.firstAttempt} total={totalWinAttempts} /></Col>
+                            <Col><p>2 tries</p> <AttempBar amount={props.secAttempt} total={totalWinAttempts}/></Col>
+                            <Col><p>3 tries</p> <AttempBar amount={props.thirdAttempt} total={totalWinAttempts} /></Col>
+                            <Col><p>4 tries</p> <AttempBar amount={props.fourthAttempt} total={totalWinAttempts} /></Col>
                         </Row>
                     </Modal.Header>
                     <Modal.Footer>
-                        <h4>Next Riddl:</h4>
+                        <h2>Play next Riddl in</h2>
                         <Timer />
+                        <Row>
+                            <Col>
+                                <div className='made-by'>
+                                    <p>made by</p> 
+                                    <img src="images/mill-logo.png" alt="Millennium"/> 
+                                </div>
+                            </Col>
+                        </Row>
                     </Modal.Footer>
             </Modal>
         </ThemeProvider>

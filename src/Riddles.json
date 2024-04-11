@@ -45,468 +45,493 @@
         "id": 9
     },
     {
+        "question": "Jung'f gur bayl xvaq bs rtt lbh pna qevax?",
+        "answer": "Rttabt",
+        "id": 10
+    },
+    {
+        "question": "Lbh unir ab vqrn jung V nz, lrg lbh jnvg sbe zr rirel lrne. V enggyr jura lbh funxr zr, ohg lbh fgvyy qba'g xabj jung'f vafvqr. Jung nz V?",
+        "answer": "Cerfrag",
+        "id": 11
+    },
+    {
+        "question": "Jung jbhyq or gur cresrpg anzr sbe n zhfvpny jbzna?",
+        "answer": "Pneby",
+        "id": 12
+    },
+    {
+        "question": "Juvpu bar bs Fnagn'f ervaqrre pna lbh frr sebz bhgre fcnpr?",
+        "answer": "Pbzrg",
+        "id": 13
+    },
+    {
         "question": "Jung pna lbh pngpu ohg abg guebj?",
         "answer": "Pbyq",
-        "id": 10
+        "id": 14
     },
     {
         "question": "Rirel qnl crbcyr nyy bire gur jbeyq pbzr gb frr zr, ohg gurl eneryl fgnl sbe zber guna n srj zvahgrf. V nz pbafvqrerq irel qvegl ol zbfg crbcyr lrg gurl fgvyy jbhyqa’g jnag n ubzr jvgubhg zr.",
         "answer": "Gbvyrg",
-        "id": 11
+        "id": 15
     },
     {
         "question": "Jung ybfrf vgf urnq va gur zbeavat naq trgf vg onpx ng avtug?",
         "answer": "Cvyybj",
-        "id": 12
+        "id": 16
     },
     {
         "question": "Ng avtug, gurl pbzr jvgubhg orvat srgpurq. Ol qnl gurl ner ybfg jvgubhg orvat fgbyra. Jung ner gurl?",
         "answer": "Fgnef",
-        "id": 13
+        "id": 17
     },
     {
         "question": "Jung vairagvba yrgf lbh ybbx evtug guebhtu n jnyy?",
         "answer": "Jvaqbj",
-        "id": 14
+        "id": 18
     },
     {
         "question": "Jung jbeq bs svir yrggref unf bayl bar yrsg jura gjb yrggref ner erzbirq?",
         "answer": "Nybar",
-        "id": 15
+        "id": 19
+    },
+    {
+        "question": "Jung vf gung jr pna’g frr, ohg vg vf va sebag bs hf? ",
+        "answer": "Shgher",
+        "id": 20
     },
     {
         "question": "Vg’f fubegre guna gur erfg naq jura vf unccl vf hc",
         "answer": "Guhzo",
-        "id": 16
+        "id": 21
     },
     {
         "question": "Jung unf n obggbz ng gur gbc?",
         "answer": "Yrtf",
-        "id": 17
+        "id": 22
     },
     {
         "question": "Jung jbeq orpbzrf ynetre jura lbh nqq gur yrggre “e” gb vg?",
         "answer": "Ynetr",
-        "id": 18
+        "id": 23
     },
     {
         "question": "Qnivq'f sngure unf guerr fbaf: Fanc, Penpxyr, naq ?",
         "answer": "Qnivq",
-        "id": 19
+        "id": 24
     },
     {
         "question": "V nz n xvaq bs pbng gung pna bayl or chg ba jura jrg. Jung nz V?",
         "answer": "Cnvag",
-        "id": 20
+        "id": 25
     },
     {
         "question": "Thvqrq, V nz fpencvat nybat, yrnivat oruvaq zl fabj-­juvgr qhfg ntnvafg gung juvpu V nz fpencvat, sbe jura V nz fpencvat, V zhfg. Jung nz V?",
         "answer": "Punyx",
-        "id": 21
+        "id": 26
     },
     {
         "question": "V unir oenapurf, ohg ab sehvg, gehax, be yrnirf. Jung nz V?",
         "answer": "Onax",
-        "id": 22
+        "id": 27
     },
     {
         "question": "Lbh urneq zr orsber, lrg lbh urne zr ntnva. Gura V qvr, ’gvyy lbh pnyy zr ntnva.",
         "answer": "Rpub",
-        "id": 23
+        "id": 28
     },
     {
         "question": "Vs nyy Jvooyrf ner Pevttyrf, nyy Obexvaf ner Xjhzoyvaf, ab Ubttyrf ner Obexvaf, naq nyy Pevttyrf ner Obexvaf, vf vg gehr gung nyy Obexvaf ner Pevttyrf?",
         "answer": "Snyfr",
-        "id": 24
+        "id": 29
     },
     {
         "question": "Jung vf gnyy, qnex/terl, naq vaivfvoyr?",
         "answer": "Fzbxr",
-        "id": 25
+        "id": 30
     },
     {
         "question": "V pna funir 25 gvzrf n qnl naq fgvyy unir n orneq? Jung nz V?",
         "answer": "Oneore",
-        "id": 26
+        "id": 31
     },
     {
         "question": "Vg srrqf rirelbar, ohg vg pna’g rng?",
         "answer": "Fcbba",
-        "id": 27
+        "id": 32
     },
     {
         "question": "V ab ybatre unir rlrf, ohg bapr V pbhyq frr. V unir n zbhgu, ohg V pna’g gnyx, abj V’z juvgr naq rzcgl. Jung nz V?",
         "answer": "Fxhyy",
-        "id": 28
+        "id": 33
     },
     {
         "question": "Vs lbh qebc zr, V’z fher gb penpx ohg fzvyr ng zr, naq V’yy nyjnlf fzvyr onpx. Jung nz V?",
         "answer": "Zveebe",
-        "id": 29
+        "id": 34
     },
     {
         "question": "Oynpx naq juvgr, cnggreaf, cevag be fgevcrf, guvf vf zl znxr-hc naq V yvir va gur jvyq. Jung nz V?",
         "answer": "Mroen",
-        "id": 30
+        "id": 35
     },
     {
         "question": "V pna syl ohg unir ab jvatf. V pna pel ohg V unir ab rlrf. Jurerire V tb, qnexarff sbyybjf zr. Jung nz V?",
         "answer": "Pybhqf",
-        "id": 31
+        "id": 36
     },
     {
         "question": "Jung unf grrgu ohg pnaabg ovgr?",
         "answer": "Pbzo",
-        "id": 32
+        "id": 37
     },
     {
         "question": "Jung unf fvk snprf ohg qbrf abg jrne znxrhc, naq gjragl-bar rlrf ohg pnaabg frr?",
         "answer": "Qvpr",
-        "id": 33
+        "id": 38
     },
     {
         "question": "Jung qb lbh pnyy n obbzrenat gung qbrfa’g pbzr onpx?",
         "answer": "Fgvpx",
-        "id": 34
+        "id": 39
     },
     {
         "question": "Jung pna lbh svyy n ohpxrg jvgu gb znxr vg yvtugre?",
         "answer": "Ubyrf",
-        "id": 35
+        "id": 40
     },
     {
         "question": "Jung vf gur orfg zbagu sbe n cnenqr?",
         "answer": "Znepu",
-        "id": 36
+        "id": 41
     },
     {
         "question": "V nz na bqq ahzore. Gnxr njnl n yrggre naq V orpbzr rira. Jung ahzore nz V?",
         "answer": "Frira",
-        "id": 37
+        "id": 42
     },
     {
         "question": "Gur crefba jub znxrf vg unf ab arrq sbe vg; gur crefba jub ohlf vg unf ab hfr sbe vg. Gur crefba jub hfrf vg pna arvgure frr abe srry vg. Jung vf vg?",
         "answer": "Pbssva",
-        "id": 38
+        "id": 43
     },
     {
         "question": "V pna or fnq, V pna or unccl, V pna or natel naq pel, V pbzr jvgu znal snprf naq fbzrgvzrf znal fvmrf. V nz noyr gb pbzzhavpngr guvatf jbeqf bsgra pnaabg. Jung nz V?",
         "answer": "Rzbwv",
-        "id": 39
+        "id": 44
     },
     {
         "question": "Fbzrgvzrf V fuvar, fbzrgvzrf V’z qhyy, fbzrgvzrf V nz ovt, naq fbzrgvzrf V nz fznyy. V pna or cbvagl, V pna or pheirq, naq qba’g nfx zr dhrfgvbaf orpnhfr rira gubhtu V’z funec, V’z abg fzneg rabhtu gb nafjre lbh. Jung nz V?",
         "answer": "Xavsr",
-        "id": 40
+        "id": 45
     },
     {
         "question": "Xvqf trg uvtu ba zr, V znxr gurz tb jvyq naq gura gurl penfu jurarire gurl unir gbb zhpu bs zr? Nz V n qeht? Jung nz V?",
         "answer": "Fhtne",
-        "id": 41
+        "id": 46
     },
     {
         "question": "Ghea zr ba zl fvqr, naq V nz rirelguvat. Phg zr va unys naq V nz abguvat. Jung nz V?",
         "answer": "Rvtug",
-        "id": 42
+        "id": 47
     },
     {
         "question": "Unaql jura lbh arrq gb zrnfher fbzrguvat be eha n xvatqbz.",
         "answer": "Ehyre",
-        "id": 43
+        "id": 48
     },
     {
         "question": "Gurer vf abguvat bhgfvqr, abguvat ba gur vafvqr yvtug nf n srngure, lrg gra zra pnaabg yvsg vg. Jung vf vg?",
         "answer": "Ohooyr",
-        "id": 44
+        "id": 49
     },
     {
         "question": "Jung vf uneqre gb pngpu gur snfgre lbh eha?",
         "answer": "Oerngu",
-        "id": 45
+        "id": 50
     },
     {
         "question": "Jung unf na rlr ohg pnaabg frr?",
         "answer": "Arrqyr",
-        "id": 46
+        "id": 51
     },
     {
         "question": "Gurer’f bayl bar jbeq va gur qvpgvbanel gung’f fcryyrq jebat. Jung vf vg?",
         "answer": "Jebat",
-        "id": 47
+        "id": 52
     },
     {
         "question": "Jvgubhg gur svefg gjb yrggref, V’z na vagryyvtrag navzny. Jvgubhg gur svefg guerr yrggref, V’z n fhowrpg va fpubby. Naq, jvgubhg gur svefg sbhe yrggref, V’z gur yrggre “r.” Jung nz V?",
         "answer": "Tencr",
-        "id": 48
+        "id": 53
     },
     {
         "question": "V nz n jrvtugl pheerapl.",
         "answer": "Cbhaq",
-        "id": 49
+        "id": 54
     },
     {
         "question": "Juvpu bar bs Fnagn’f ervaqrre hfrq gb jbex sbe Cebpgbe naq Tnzoyr?",
         "answer": "Pbzrg",
-        "id": 50
+        "id": 55
     },
     {
         "question": "Jung unf sbhe yrtf, ohg pna'g jnyx?",
         "answer": "Gnoyr",
-        "id": 51
+        "id": 56
     },
     {
         "question": "V pna or yvdhvq be fbyvq, fbzrgvzrf V ohooyr naq lbh pna svaq zr va rirel ubzr. Jung nz V? ",
         "answer": "Fbnc",
-        "id": 52
+        "id": 57
     },
     {
         "question": "Jung snyyf lrg arire oernxf?",
         "answer": "Avtug",
-        "id": 53
+        "id": 58
     },
     {
         "question": "Jung n puvyq pna znxr gung ab bar pna rire frr?",
         "answer": "Abvfr",
-        "id": 54
+        "id": 59
     },
     {
         "question": "Crbcyr ohl zr gb rng ohg arire rng zr. Jung nz V?",
         "answer": "Cyngrf",
-        "id": 55
+        "id": 60
     },
     {
         "question": "Crbcyr znxr zr, fnir zr, punatr zr, envfr zr. Jung nz V?",
         "answer": "Zbarl",
-        "id": 56
+        "id": 61
     },
     {
         "question": "Guvf ba guvf. Gung ba gung. Tebjvat gnyy, Ohg arire sng. Jung nz V?",
         "answer": "Fgnpx",
-        "id": 57
+        "id": 62
     },
     {
-        "question": "Jung ratyvfu jbeq ergnvaf gur fnzr cebahapvngvba, rira nsgre lbh gnxr njnl sbhe bs vgf svir yrggref?",
+        "question": "Jung Ratyvfu jbeq ergnvaf gur fnzr cebahapvngvba, rira nsgre lbh gnxr njnl sbhe bs vgf svir yrggref?",
         "answer": "Dhrhr",
-        "id": 58
+        "id": 63
     },
     {
         "question": "V nz tbvat bhg jura lbh ner fnq be jura lbh ner unccl. Bgure gvzrf lbh jnag gb uvqr zr ohg vgf uneq fb cyrnfr qba’g gel vg. Jung nz V?",
         "answer": "Grnef",
-        "id": 59
+        "id": 64
     },
     {
         "question": "Jung pna svyy n ebbz ohg gnxrf hc ab fcnpr?",
         "answer": "Yvtug",
-        "id": 60
+        "id": 65
     },
     {
         "question": "Jung vf unys bs gjb cyhf gjb?",
         "answer": "Guerr",
-        "id": 61
+        "id": 66
     },
     {
         "question": "Jr unir jbeqf, ohg jr arire fcrnx. Jung ner jr?",
         "answer": "Obbxf",
-        "id": 62
+        "id": 67
     },
     {
         "question": "Juvpu bs gur sbyybjvat jbeqf qba’g orybat va gur tebhc naq jul? PBEFRG, PBFGRE, FRPGBE, RFPBEG, PBHEGF",
         "answer": "Pbhegf",
-        "id": 63
+        "id": 68
     },
     {
         "question": "Jung qb lbh nafjre rira gubhtu vg arire nfxf lbh dhrfgvbaf?",
         "answer": "Cubar",
-        "id": 64
+        "id": 69
     },
     {
         "question": "Lbh zrnfher zl yvsr va ubhef, naq V freir lbh ol rkcvevat. V’z dhvpx jura V’z guva naq fybj jura V’z sng. Gur jvaq vf zl rarzl. Jung nz V?",
         "answer": "Pnaqyr",
-        "id": 65
+        "id": 70
     },
     {
         "question": "Jung unf sbhe svatref naq bar guhzo, ohg vf abg nyvir?",
         "answer": "Tybir",
-        "id": 66
+        "id": 71
     },
     {
         "question": "Jung fvgf va n pbeare juvyr geniryvat nyy nebhaq gur jbeyq?",
         "answer": "Fgnzc",
-        "id": 67
+        "id": 72
     },
     {
         "question": "V tb hc naq V tb qbja, fbzrgvzrf V nz pheil naq fbzrgvzrf V nz fgenvtug. Jung nz V? ",
         "answer": "Fgnvef",
-        "id": 68
+        "id": 73
     },
     {
         "question": "Bar fgenaq qnatyrf. Gjb fgenaqf gjvfg. Guerr be zber pna snfuvba guvf.",
         "answer": "Oenvqf",
-        "id": 69
+        "id":74
     },
     {
         "question": "V pna or penpxrq. Naq, V pna or znqr. V pna or gbyq. Naq, V pna or cynlrq. Jung nz V?",
         "answer": "Wbxr",
-        "id": 70
+        "id": 75
     },
     {
         "question": "V nz tbvat snfg, naq V nz fgnaqvat fgvyy. V nz genafsreevat crbcyr naq guvatf nyy bire gur jbeq. V unir frngf ohg V pna’g syl. V znxr n fbhaq gung xvqf jbhyq yvxr. Jung nz v?",
         "answer": "Genva",
-        "id": 71
+        "id": 76
     },
     {
         "question": "Jung gnfgrf orggre guna vg fzryyf?",
         "answer": "Gbathr",
-        "id": 72
+        "id": 77
     },
     {
         "question": "Jung jbeq ybbxf gur fnzr hcfvqr qbja naq onpxjneqf?",
         "answer": "Fjvzf",
-        "id": 73
+        "id": 78
     },
     {
         "question": "Jung ehaf nyy nebhaq n onpxlneq, lrg arire zbirf?",
         "answer": "Srapr",
-        "id": 74
+        "id": 79
     },
     {
         "question": "Lbh ohel zr jura V’z nyvir naq qvt zr hc jura V’z qrnq. Jung nz V?",
         "answer": "Cynag",
-        "id": 75
+        "id": 80
     },
     {
         "question": "Jung qbrfa'g trg nal jrggre, ab znggre ubj zhpu enva snyyf ba vg?",
         "answer": "Jngre",
-        "id": 76
+        "id": 81
     },
     {
         "question": " Bayl bar pbybe, ohg abg bar fvmr. Fghpx ng gur obggbz, lrg rnfvyl syvrf. Cerfrag va fha, ohg abg va enva. Qbvat ab unez naq srryvat ab cnva. Jung vf vg?",
         "answer": "Funqbj",
-        "id": 77
+        "id": 82
     },
     {
         "question": "Jub vf gung jvgu n arpx naq ab urnq, gjb nezf naq ab unaqf?",
         "answer": "Fuveg",
-        "id": 78
+        "id": 83
     },
     {
         "question": " V pna eha ohg abg jnyx. Gur gubhtug vf abg sne oruvaq zr. Jung nz V?",
         "answer": "Abfr",
-        "id": 79
+        "id": 84
     },
     {
         "question": "Jung glcr bs purrfr vf znqr onpxjneq?",
         "answer": "Rqnz",
-        "id": 80
+        "id": 85
     },
     {
         "question": "Fgrir vf lbhatre guna Crgr ohg byqre guna Avpxl. Yneel vf byqre guna Revpn jub vf byqre guna Fgrir. Crgr vf byqre guna Yneel. Jub vf gur zvqqyr puvyq?",
         "answer": "Revpn",
-        "id": 81
+        "id": 86
     },
     {
         "question": "Jura V’z hfrq, V’z hfryrff. Bapr bssrerq, fbba erwrpgrq. Va qrfcrengvba, V’z bsgra rkcerffrq. Jung nz V?",
         "answer": "Rkphfr",
-        "id": 82
+        "id": 87
     },
     {
         "question": "Jnyx ba gur yvivat. Gurl qba’g rira zhzoyr. Jnyx ba gur qrnq. Gurl zhggre naq tehzoyr. Jung ner gurl?",
         "answer": "Yrnirf",
-        "id": 83
+        "id": 88
     },
     {
         "question": "Guvf pna or lryybj, erq, cvax be juvgr. Vg vf qryvpngr naq sentenag naq lbh orggre abg sbetrg gb tvir fbzr jngre gb zr erthyneyl! Jung nz vg?",
         "answer": "Ebfrf",
-        "id": 84
+        "id": 89
     },
     {
         "question": "V’z pbirerq jvgu rlrf, ohg V pna’g frr naq yvir zbfgyl va gur qnex. Jung nz V?",
         "answer": "Cbgngb",
-        "id": 85
+        "id": 90
     },
     {
         "question": "Lbh ragre n qnex ebbz. Lbh unir bayl bar zngpu. Gurer vf na bvy ynzc, n sheanpr, naq n fgbir va gur ebbz. Juvpu jbhyq lbh yvtug svefg?",
         "answer": "Zngpu",
-        "id": 86
+        "id": 91
     },
     {
         "question": "V pna or pehfurq gb cvrprf ohg bayl vs V nz tvira njnl svefg, V pna or pybttrq naq nggnpxrq ohg gung’f hfhnyyl zl bja qbvat. Ab znggre ubj znal ceboyrzf V unir, lbh jbhyqa’g qner yrg zr tb. Jung nz V?",
         "answer": "Urneg",
-        "id": 87
+        "id": 92
     },
     {
         "question": "Jung orybatf gb lbh, ohg rirelbar ryfr hfrf vg?",
         "answer": "Anzr",
-        "id": 88
+        "id": 93
     },
     {
         "question": "Crbcyr fnl V chg qbpgbef bhg bs ohfvarff, fbzrgvzrf V nz fbhe, fbzrgvzrf V nz fjrrg, V pna or rngra naq pna nyfb or qehax. Jung nz V?",
         "answer": "Nccyr",
-        "id": 89
+        "id": 94
     },
     {
         "question": "V yvxr gb gjvey zl obql ohg xrrc zl urnq hc uvtu. Nsgre V tb va, rirelguvat orpbzrf gvtug. Jung nz V?",
         "answer": "Fperj",
-        "id": 90
+        "id": 95
     },
     {
         "question": "Gnxr bss zl fxva naq V jba'g pel, ohg lbh jvyy, Jung nz V?",
         "answer": "Bavba",
-        "id": 91
+        "id": 96
     },
     {
         "question": "Ybiryl naq ebhaq, V'z fuvzzrel juvgr, tebja va gur qnexarff, n ynql'f qryvtug. Jung nz V?",
         "answer": "Crney",
-        "id": 92
+        "id": 97
     },
     {
         "question": "V unir zneevrq znal gvzrf, ohg unir nyjnlf orra fvatyr. Jub nz V?",
         "answer": "Cevrfg",
-        "id": 93
+        "id": 98
     },
     {
         "question": "V tb nebhaq va pvepyrf, ohg nyjnlf fgenvtug nurnq. V arire pbzcynva ab znggre jurer V nz yrq. Jung nz V?",
         "answer": "Jurry",
-        "id": 94
+        "id": 99
     },
     {
         "question": "V nz na navzny naq n unve cebqhpg. Jung nz V?",
         "answer": "Zbbfr",
-        "id": 95
+        "id": 100
     },
     {
-        "question": "V bayl pbzr bhg ng avtug, ohg abg rirel avtug naq V nz abg fyrrcvat va gur qnl. Va snpg V nz nyjnlf gurer, lbh whfg bsgra qba’g frr zr. Fbzr crbcyr guvax V ybbx yvxr n ohaal, jurernf bguref pynvz V ybbx yvxr n crefba.",
+        "question": "V bayl pbzr bhg ng avtug, ohg abg rirel avtug naq V nz abg fyrrcvat va gur qnl. Va snpg, V nz nyjnlf gurer, lbh whfg bsgra qba’g frr zr. Fbzr crbcyr guvax V ybbx yvxr n ohaal, jurernf bguref pynvz V ybbx yvxr n crefba.",
         "answer": "Zbba",
-        "id": 96
+        "id": 101
     },
     {
         "question": "Jung unf ubyrf ba rnpu fvqr, ohg pna fgvyy pna ubyq jngre?",
         "answer": "Fcbatr",
-        "id": 97
+        "id": 102
     },
     {
         "question": "Ba Puevfgznf Rir, jura Fnagn yrnirf uvf jbexfubc ng gur Abegu Cbyr, jung qverpgvba qbrf ur geniry?",
         "answer": "Fbhgu",
-        "id": 98
+        "id": 103
     },
     {
         "question": "Jung unf n zbhgu ohg pna'g purj?",
         "answer": "Evire",
-        "id": 99
+        "id": 104
     },
     {
         "question": "N gnfgl erjneq tvira gb jryy orunirq qbtf naq xvqf",
         "answer": "Gerng",
-        "id": 100
+        "id": 105
     },
     {
         "question": "Jung sbhe-yrggre jbeq pna or jevggra sbejneq, onpxjneq, be hcfvqr qbja, naq pna fgvyy or ernq sebz yrsg gb evtug?",
         "answer": "Abba",
-        "id": 101
+        "id": 106
     },
     {
         "question": "Lbh frr uvz sylvat nebhaq pneelvat objf naq neebjf naq bapr ur uvgf lbh jvgu vg, nyy lbh srry vf ybir abg fbeebj. Ur zhfg unir uvg hf obgu. Jub vf ur?",
         "answer": "Phcvq",
-        "id": 102
+        "id": 107
     }
 ]

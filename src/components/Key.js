@@ -3,6 +3,8 @@ import { AppContext } from '../App';
 
 function Key({keyVal, bigKey, disabled}) {
     const {onSelectLetter, onDelete, onEnter} = useContext(AppContext);
+
+    //console.log('KEY DISABLED', keyVal, disabled)
     const selectLetter = () => {
         if (keyVal === "ENT"){
             onEnter();
@@ -17,9 +19,9 @@ function Key({keyVal, bigKey, disabled}) {
     if(disabled){ keyClass = "disabled" }
     //console.log('!!!KEY VARS',keyVal,bigKey,disabled,keyClass);
     return (
-        <div className={`key ${keyClass}`} onClick={selectLetter}>
+        <button className={`key key-${keyVal} ${keyClass}`} onClick={selectLetter}>
             {keyVal}
-        </div>
+        </button>
     )
 }
 

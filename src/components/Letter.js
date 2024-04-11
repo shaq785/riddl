@@ -2,15 +2,16 @@ import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../App';
 
 function Letter({letterPos, attemptVal, id}) {
-    const { board, correctWord, currAttempt, disabledLetters, setContext} = useContext(AppContext);
+    const { board ,boardValidationGrid, correctWord, currAttempt, disabledLetters, setContext} = useContext(AppContext);
     const letter = board[attemptVal][letterPos];
-
-    const correct = correctWord.toUpperCase()[letterPos] === letter;
-    const almost = !correct && letter !== "" && correctWord.toUpperCase().includes(letter);
-    
+    const emoji = boardValidationGrid[attemptVal][letterPos];
+    const correct = emoji === "🟩";
+    const almost = emoji === "🟧";
+    //console.log(emoji, letter);
 
     const letterState = currAttempt.attempt > attemptVal &&
-     (correct ? "correct" : almost ? "almost" : "error");
+     (correct ? "correct" : almost ? "almost" : "incorrect");
+
     //setBoardValidation(boardValidation);
     //const valBoard = [[...boardValidation[0]],[...boardValidation[1]],[...boardValidation[2]],[...boardValidation[3]]];
     //valBoard.push(['hi']);
@@ -30,6 +31,7 @@ function Letter({letterPos, attemptVal, id}) {
         <div className={`letter ${letterState || ""}`} id={id}>
             {""}
             {letter}
+            <p className="sr-only">{letterState}</p>
         </div>
     )
 }

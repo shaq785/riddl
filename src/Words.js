@@ -5,7 +5,7 @@ import Riddles from './Riddles.json';
 
 
 
-export const boardDefault = [
+export const boardDefault = () => [
     ["", "", "", "", "", ""],
     ["", "", "", "", "", ""],
     ["", "", "", "", "", ""],
@@ -44,7 +44,7 @@ export const generateWordSet = async () => {
 
     today = yyyy + '-' + mm + '-' + dd; 
     const todayDate = new Date(today);
-    const originDate = new Date('2022-08-01');
+    const originDate = new Date('2022-12-13');
     let dateDiff = todayDate - originDate;
     let dayNumber = riddleIndexOverride ? riddleIndexOverride : dateDiff / (24*60*60*1000);
 
@@ -59,6 +59,10 @@ export const generateWordSet = async () => {
         .then((response) => response.text())
         .then((result) => {
             const wordArr = result.split("\n");
+            wordArr.map((word, index) => {
+                wordArr[index] = word.trim();
+                return null
+            });
             //const riddleId = Riddles[Math.floor(Math.random()*Riddles.length)];
             const ren = str => str.replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);});
             const newRiddles = []
@@ -73,7 +77,7 @@ export const generateWordSet = async () => {
             })
 
             const riddleId = newRiddles[dayNumber];
-            wordSet = new Set(wordArr);
+            wordSet = wordArr;
             todaysRiddle = riddleId;
             todaysQuestion = todaysRiddle.question;
             todaysAnswer = todaysRiddle.answer;
